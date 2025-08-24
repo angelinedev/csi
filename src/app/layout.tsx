@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import Plasma from '@/components/shared/plasma-background';
 
 
 export default function RootLayout({
@@ -43,7 +44,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="fixed inset-0 -z-10 h-full w-full bg-background">
-            <div className="absolute inset-0 bg-plasma-purple animate-plasma-flow bg-[size:400%_400%] opacity-20 dark:opacity-30"></div>
+            {mounted && (
+              <Plasma 
+                color={resolvedTheme === 'dark' ? '#673ab7' : '#e0e7ff'}
+                speed={0.5}
+                scale={resolvedTheme === 'dark' ? 1.5 : 2}
+                opacity={resolvedTheme === 'dark' ? 0.3 : 0.6}
+              />
+            )}
           </div>
           <Header />
           <main className="overflow-x-hidden">{children}</main>

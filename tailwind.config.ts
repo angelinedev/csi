@@ -94,21 +94,11 @@ export default {
             transform: 'translateY(0)',
           },
         },
-        'plasma-flow': {
-          '0%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-          '100%': { backgroundPosition: '0% 50%' },
-        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
-        'plasma-flow': 'plasma-flow 20s ease infinite',
-      },
-      backgroundImage: {
-        'plasma-purple':
-          'radial-gradient(at 20% 20%, hsl(var(--primary) / 0.4) 0px, transparent 50%), radial-gradient(at 80% 20%, hsl(var(--accent) / 0.4) 0px, transparent 50%), radial-gradient(at 50% 80%, hsl(var(--primary) / 0.5) 0px, transparent 50%)',
       },
     },
   },
