@@ -18,7 +18,9 @@ export default function RootLayout({
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -30,7 +32,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.goolgeapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -42,19 +44,17 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="fixed inset-0 -z-10">
-            {mounted &&
-              (resolvedTheme === 'dark' ? (
-                <DarkVeil
-                  noiseIntensity={0.03}
-                  scanlineIntensity={0.05}
-                  scanlineFrequency={30}
-                  warpAmount={0.3}
-                  hueShift={0}
-                  speed={0.2}
-                />
-              ) : (
-                <PlexusBackground />
-              ))}
+            {mounted && resolvedTheme === 'dark' && (
+              <DarkVeil
+                noiseIntensity={0.03}
+                scanlineIntensity={0.05}
+                scanlineFrequency={30}
+                warpAmount={0.3}
+                hueShift={0}
+                speed={0.2}
+              />
+            )}
+            {mounted && resolvedTheme === 'light' && <PlexusBackground />}
           </div>
           <Header />
           <main className="overflow-x-hidden">{children}</main>
