@@ -76,7 +76,7 @@ export default function EventsPage() {
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
-                  <div className="p-6 flex flex-col md:w-3/5">
+                  <div className="p-6 flex flex-col md:w-3/5 h-full">
                     <div className="flex justify-between items-start">
                       <h3 className="text-2xl font-bold text-card-foreground">{event.title}</h3>
                       <Badge variant={event.status === 'Upcoming' ? 'default' : 'secondary'} className="ml-4 shrink-0 bg-primary/20 text-primary border-primary/30">
