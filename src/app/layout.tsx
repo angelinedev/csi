@@ -7,7 +7,6 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
 import DarkVeil from '@/components/shared/dark-veil';
-import { PlexusBackground } from '@/components/shared/plexus-background';
 import { useEffect, useState } from 'react';
 
 export default function RootLayout({
@@ -16,7 +15,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [mounted, setMounted] = useState(false);
-  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -44,7 +42,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="fixed inset-0 -z-10">
-            {mounted && resolvedTheme === 'dark' && (
+            {mounted && (
               <DarkVeil
                 noiseIntensity={0.03}
                 scanlineIntensity={0.05}
@@ -54,7 +52,6 @@ export default function RootLayout({
                 speed={0.2}
               />
             )}
-            {mounted && resolvedTheme === 'light' && <PlexusBackground />}
           </div>
           <Header />
           <main className="overflow-x-hidden">{children}</main>
