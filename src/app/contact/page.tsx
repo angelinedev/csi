@@ -1,7 +1,6 @@
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { ContactForm } from '@/components/contact-form';
-import ElectricBorder from '@/components/shared/electric-border';
-import { Card, CardContent } from '@/components/ui/card';
+import GlareHover from '@/components/shared/glare-hover';
 import { Mail, User, Shield } from 'lucide-react';
 
 const contactDetails = [
@@ -41,19 +40,17 @@ export default function ContactPage() {
             </ScrollReveal>
             {contactDetails.map((contact, index) => (
                 <ScrollReveal key={contact.name} delay={100 * index}>
-                    <ElectricBorder className="rounded-lg">
-                      <Card className="p-6 glassmorphic rounded-lg">
-                        <div className="flex items-center gap-4">
-                            <div className="p-3 bg-primary/10 rounded-full">
-                                <contact.icon className="w-6 h-6 text-primary" />
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-card-foreground">{contact.name}</h3>
-                                <p className="text-sm text-muted-foreground">{contact.role}</p>
-                            </div>
-                        </div>
-                      </Card>
-                    </ElectricBorder>
+                    <GlareHover className="p-6 glassmorphic">
+                      <div className="flex items-center gap-4">
+                          <div className="p-3 bg-primary/10 rounded-full">
+                              <contact.icon className="w-6 h-6 text-primary" />
+                          </div>
+                          <div>
+                              <h3 className="font-bold text-card-foreground">{contact.name}</h3>
+                              <p className="text-sm text-muted-foreground">{contact.role}</p>
+                          </div>
+                      </div>
+                    </GlareHover>
                 </ScrollReveal>
             ))}
         </div>
