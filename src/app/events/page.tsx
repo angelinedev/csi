@@ -1,3 +1,4 @@
+
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import ElectricBorder from '@/components/shared/electric-border';
 import Image from 'next/image';
@@ -57,7 +58,7 @@ export default function EventsPage() {
         </p>
       </ScrollReveal>
 
-      <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 grid-flow-row-dense">
         {events.map((event, index) => (
           <ScrollReveal key={event.title} delay={100 * (index % 2)}>
             <ElectricBorder
