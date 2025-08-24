@@ -1,9 +1,10 @@
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { ElectricBorderCard } from '@/components/shared/electric-border-card';
+import ElectricBorder from '@/components/shared/electric-border';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, Clock } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 const events = [
   {
@@ -59,7 +60,8 @@ export default function EventsPage() {
       <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
         {events.map((event, index) => (
           <ScrollReveal key={event.title} delay={100 * (index % 2)}>
-            <ElectricBorderCard className="h-full group overflow-hidden">
+            <ElectricBorder className="h-full group rounded-lg">
+              <Card className="h-full group overflow-hidden glassmorphic rounded-lg">
                 <div className="flex flex-col md:flex-row h-full">
                   <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
                     <Image
@@ -94,7 +96,8 @@ export default function EventsPage() {
                     )}
                   </div>
                 </div>
-            </ElectricBorderCard>
+              </Card>
+            </ElectricBorder>
           </ScrollReveal>
         ))}
       </div>

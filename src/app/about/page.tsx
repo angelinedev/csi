@@ -1,7 +1,8 @@
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { ElectricBorderCard } from '@/components/shared/electric-border-card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Users } from 'lucide-react';
+import ElectricBorder from '@/components/shared/electric-border';
+import { Card } from '@/components/ui/card';
 
 const officeBearers = [
   { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI' },
@@ -48,21 +49,23 @@ export default function AboutPage() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {officeBearers.map((bearer, index) => (
             <ScrollReveal key={bearer.name} delay={100 * (index % 4)}>
-              <ElectricBorderCard className="h-full">
-                <div className="flex flex-col items-center text-center p-6">
-                  <Avatar className="w-24 h-24 mb-4 border-4 border-primary/50">
-                    <AvatarImage src={`https://placehold.co/100x100.png`} data-ai-hint="portrait person" />
-                    <AvatarFallback>
-                      <Users className="w-8 h-8 text-muted-foreground" />
-                    </AvatarFallback>
-                  </Avatar>
-                  <h4 className="text-lg font-bold text-card-foreground">{bearer.name}</h4>
-                  <p className="text-primary font-medium">{bearer.role}</p>
-                </div>
-              </ElectricBorderCard>
+              <ElectricBorder className="h-full rounded-lg">
+                <Card className="h-full glassmorphic rounded-lg">
+                  <div className="flex flex-col items-center text-center p-6">
+                    <Avatar className="w-24 h-24 mb-4 border-4 border-primary/50">
+                      <AvatarImage src={`https://placehold.co/100x100.png`} data-ai-hint="portrait person" />
+                      <AvatarFallback>
+                        <Users className="w-8 h-8 text-muted-foreground" />
+                      </AvatarFallback>
+                    </Avatar>
+                    <h4 className="text-lg font-bold text-card-foreground">{bearer.name}</h4>
+                    <p className="text-primary font-medium">{bearer.role}</p>
+                  </div>
+                </Card>
+              </ElectricBorder>
             </ScrollReveal>
           ))}
         </div>
