@@ -7,6 +7,7 @@ import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { PlexusBackground } from '@/components/shared/plexus-background';
 
 
 export default function RootLayout({
@@ -42,6 +43,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="fixed inset-0 -z-10 h-full w-full">
+            <PlexusBackground />
+          </div>
           <Header />
           <main className="overflow-x-hidden">{children}</main>
           <Toaster />
