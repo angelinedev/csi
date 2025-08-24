@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -39,7 +40,7 @@ export default function RootLayout({
               scanlineIntensity={0.05}
               scanlineFrequency={30}
               warpAmount={0.3}
-              hueShift={-20}
+              hueShift={40}
               speed={0.2}
             />
           </div>
