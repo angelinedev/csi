@@ -19,10 +19,10 @@ const officeBearersData = [
   { name: 'Sharan S', role: 'Executive Member' },
 ];
 
-const officeBearers: ChromaItem[] = officeBearersData.map((person, index) => ({
+const officeBearers: ChromaItem[] = officeBearersData.map((person) => ({
     title: person.name,
     subtitle: person.role,
-    image: `https://i.pravatar.cc/300?img=${index + 1}`,
+    image: `https://placehold.co/300x300.png`,
 }));
 
 export default function AboutPage() {
