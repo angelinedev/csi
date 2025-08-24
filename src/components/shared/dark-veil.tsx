@@ -2,7 +2,6 @@
 'use client';
 import { useRef, useEffect } from 'react';
 import { Renderer, Program, Mesh, Triangle, Vec2 } from 'ogl';
-import { useTheme } from 'next-themes';
 
 const vertex = `
 attribute vec2 position;
@@ -101,7 +100,6 @@ export default function DarkVeil({
   resolutionScale = 1,
 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
-  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
