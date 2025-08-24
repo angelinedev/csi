@@ -1,5 +1,6 @@
 
 'use client';
+import { useTheme } from 'next-themes';
 import { useRef, useEffect } from 'react';
 import { Renderer, Program, Mesh, Triangle, Vec2 } from 'ogl';
 
@@ -100,6 +101,7 @@ export default function DarkVeil({
   resolutionScale = 1,
 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -145,6 +147,7 @@ export default function DarkVeil({
     let frame = 0;
 
     const loop = () => {
+      frame = requestAnimationFrame(loop);
       program.uniforms.uTime.value =
         ((performance.now() - start) / 1000) * speed;
       program.uniforms.uHueShift.value = resolvedTheme === 'light' ? 31 : hueShift;
@@ -155,7 +158,6 @@ export default function DarkVeil({
       program.uniforms.uIsLight.value =
         resolvedTheme === 'light' ? 1.0 : 0.0;
       renderer.render({ scene: mesh });
-      frame = requestAnimationFrame(loop);
     };
 
     loop();
