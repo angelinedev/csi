@@ -15,14 +15,17 @@ export const DarkVeil = () => {
     let height = (canvas.height = window.innerHeight);
 
     let angle = 0;
+    let animationFrameId: number;
 
     const draw = () => {
         angle += 0.001;
+        if (!ctx) return;
         ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
+        const rootStyle = getComputedStyle(document.documentElement);
+        ctx.fillStyle = rootStyle.getPropertyValue('--background').trim();
         ctx.fillRect(0, 0, width, height);
 
-        const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+        const primaryColor = rootStyle.getPropertyValue('--primary').trim();
 
         for (let i = 0; i < 50; i++) {
             const x = width / 2 + Math.sin(angle + i * 0.1) * (width / 4 + i * 5);
@@ -30,15 +33,15 @@ export const DarkVeil = () => {
             const radius = Math.abs(Math.sin(angle + i * 0.2)) * 3 + 1;
             
             const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius * 2);
-            gradient.addColorStop(0, `hsla(${primaryColor}, 0.5)`);
-            gradient.addColorStop(1, `hsla(${primaryColor}, 0)`);
+            gradient.addColorStop(0, `hsla(${primaryColor} / 0.5)`);
+            gradient.addColorStop(1, `hsla(${primaryColor} / 0)`);
             
             ctx.fillStyle = gradient;
             ctx.beginPath();
             ctx.arc(x, y, radius * 2, 0, Math.PI * 2);
             ctx.fill();
         }
-        requestAnimationFrame(draw);
+        animationFrameId = requestAnimationFrame(draw);
     };
 
     const handleResize = () => {
@@ -50,6 +53,7 @@ export const DarkVeil = () => {
     draw();
 
     return () => {
+        cancelAnimationFrame(animationFrameId);
         window.removeEventListener('resize', handleResize);
     };
   }, []);
