@@ -7,7 +7,6 @@ import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import Silk from '@/components/shared/silk-background';
 
 
 export default function RootLayout({
@@ -43,13 +42,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed inset-0 -z-10">
-            {mounted && (
-                <Silk
-                  color={resolvedTheme === 'light' ? '#E5E7EB' : '#1A122B'}
-                />
-            )}
-          </div>
           <Header />
           <main className="overflow-x-hidden">{children}</main>
           <Toaster />
