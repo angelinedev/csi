@@ -109,7 +109,6 @@ export default {
       backgroundImage: {
         'plasma-purple':
           'radial-gradient(at 20% 20%, hsl(var(--primary) / 0.4) 0px, transparent 50%), radial-gradient(at 80% 20%, hsl(var(--accent) / 0.4) 0px, transparent 50%), radial-gradient(at 50% 80%, hsl(var(--primary) / 0.5) 0px, transparent 50%)',
-        'grid-purple-dark': "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke-width='2' stroke='hsl(262 52% 25% / 0.5)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")"
       },
     },
   },
