@@ -23,9 +23,9 @@ interface GlareHoverProps {
 const GlareHover: React.FC<GlareHoverProps> = ({
   width = "100%",
   height = "auto",
-  background = "hsl(var(--card))",
-  borderRadius = "var(--radius)",
-  borderColor = "hsl(var(--border))",
+  background,
+  borderRadius,
+  borderColor,
   children,
   glareColor = "#ffffff",
   glareOpacity = 0.1,
@@ -95,9 +95,9 @@ const GlareHover: React.FC<GlareHoverProps> = ({
       style={{
         width,
         height,
-        background,
-        borderRadius,
-        borderColor,
+        background: background || "hsl(var(--card))",
+        borderRadius: borderRadius || "var(--radius)",
+        borderColor: borderColor || "hsl(var(--border))",
         ...style,
       }}
       onMouseEnter={animateIn}

@@ -1,6 +1,7 @@
 'use client';
-import { useRef, useEffect } from "react";
-import { Renderer, Program, Mesh, Triangle, Vec2 } from "ogl";
+import { useRef, useEffect } from 'react';
+import { Renderer, Program, Mesh, Triangle, Vec2 } from 'ogl';
+import { useTheme } from 'next-themes';
 
 const vertex = `
 attribute vec2 position;
@@ -18,6 +19,8 @@ uniform float uNoise;
 uniform float uScan;
 uniform float uScanFreq;
 uniform float uWarp;
+uniform float uIsLight;
+
 #define iTime uTime
 #define iResolution uResolution
 
@@ -70,6 +73,9 @@ void main(){
     float scanline_val=sin(gl_FragCoord.y*uScanFreq)*0.5+0.5;
     col.rgb*=1.-(scanline_val*scanline_val)*uScan;
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
+    if(uIsLight > 0.5){
+        col.rgb = 1.0 - col.rgb;
+    }
     gl_FragColor=vec4(clamp(col.rgb,0.0,1.0),1.0);
 }
 `;
@@ -94,6 +100,8 @@ export default function DarkVeil({
   resolutionScale = 1,
 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const { resolvedTheme } = useTheme();
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const canvas = ref.current as HTMLCanvasElement;
@@ -118,6 +126,7 @@ export default function DarkVeil({
         uScan: { value: scanlineIntensity },
         uScanFreq: { value: scanlineFrequency },
         uWarp: { value: warpAmount },
+        uIsLight: { value: resolvedTheme === 'light' ? 1.0 : 0.0 },
       },
     });
 
@@ -130,7 +139,7 @@ export default function DarkVeil({
       program.uniforms.uResolution.value.set(w, h);
     };
 
-    window.addEventListener("resize", resize);
+    window.addEventListener('resize', resize);
     resize();
 
     const start = performance.now();
@@ -144,6 +153,8 @@ export default function DarkVeil({
       program.uniforms.uScan.value = scanlineIntensity;
       program.uniforms.uScanFreq.value = scanlineFrequency;
       program.uniforms.uWarp.value = warpAmount;
+      program.uniforms.uIsLight.value =
+        resolvedTheme === 'light' ? 1.0 : 0.0;
       renderer.render({ scene: mesh });
       frame = requestAnimationFrame(loop);
     };
@@ -152,7 +163,7 @@ export default function DarkVeil({
 
     return () => {
       cancelAnimationFrame(frame);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener('resize', resize);
     };
   }, [
     hueShift,
@@ -162,11 +173,7 @@ export default function DarkVeil({
     scanlineFrequency,
     warpAmount,
     resolutionScale,
+    resolvedTheme,
   ]);
-  return (
-    <canvas
-      ref={ref}
-      className="w-full h-full block"
-    />
-  );
+  return <canvas ref={ref} className="w-full h-full block" />;
 }
