@@ -1,13 +1,13 @@
 
 'use client';
-import { useTheme } from 'next-themes';
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
-import DarkVeil from '@/components/shared/dark-veil';
 import { useEffect, useState } from 'react';
+import Beams from '@/components/shared/beams-background';
+import { useTheme } from 'next-themes';
 
 export default function RootLayout({
   children,
@@ -15,10 +15,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const beamsConfig = {
+    light: {
+      lightColor: '#673AB7',
+      speed: 1,
+      beamNumber: 10,
+      beamWidth: 1.5,
+      beamHeight: 12,
+      noiseIntensity: 1.2,
+      scale: 0.15,
+    },
+    dark: {
+      lightColor: '#673AB7',
+      speed: 2,
+      beamNumber: 12,
+      beamWidth: 2,
+      beamHeight: 15,
+      noiseIntensity: 1.75,
+      scale: 0.2,
+    },
+  };
+  
+  const currentConfig = resolvedTheme === 'light' ? beamsConfig.light : beamsConfig.dark;
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -43,13 +67,14 @@ export default function RootLayout({
         >
           <div className="fixed inset-0 -z-10">
             {mounted && (
-              <DarkVeil
-                noiseIntensity={0.03}
-                scanlineIntensity={0.05}
-                scanlineFrequency={30}
-                warpAmount={0.3}
-                hueShift={0}
-                speed={0.2}
+              <Beams
+                lightColor={currentConfig.lightColor}
+                speed={currentConfig.speed}
+                beamNumber={currentConfig.beamNumber}
+                beamWidth={currentConfig.beamWidth}
+                beamHeight={currentConfig.beamHeight}
+                noiseIntensity={currentConfig.noiseIntensity}
+                scale={currentConfig.scale}
               />
             )}
           </div>
