@@ -1,10 +1,11 @@
-import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Users } from 'lucide-react';
-import ElectricBorder from '@/components/shared/electric-border';
-import { Card } from '@/components/ui/card';
 
-const officeBearers = [
+'use client';
+import { ScrollReveal } from '@/components/shared/scroll-reveal';
+import ChromaGrid, {
+  ChromaItem,
+} from '@/components/shared/chroma-grid';
+
+const officeBearersData = [
   { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI' },
   { name: 'Mahendra Udayakumar', role: 'President' },
   { name: 'Megha Shree G', role: 'Vice President' },
@@ -17,6 +18,12 @@ const officeBearers = [
   { name: 'Shruthi D', role: 'Executive Member' },
   { name: 'Sharan S', role: 'Executive Member' },
 ];
+
+const officeBearers: ChromaItem[] = officeBearersData.map((person, index) => ({
+    title: person.name,
+    subtitle: person.role,
+    image: `https://i.pravatar.cc/300?img=${index + 1}`,
+}));
 
 export default function AboutPage() {
   return (
@@ -49,25 +56,8 @@ export default function AboutPage() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {officeBearers.map((bearer, index) => (
-            <ScrollReveal key={bearer.name} delay={100 * (index % 4)}>
-              <ElectricBorder className="h-full rounded-lg">
-                <Card className="h-full glassmorphic rounded-lg">
-                  <div className="flex flex-col items-center text-center p-6">
-                    <Avatar className="w-24 h-24 mb-4 border-4 border-primary/50">
-                      <AvatarImage src={`https://placehold.co/100x100.png`} data-ai-hint="portrait person" />
-                      <AvatarFallback>
-                        <Users className="w-8 h-8 text-muted-foreground" />
-                      </AvatarFallback>
-                    </Avatar>
-                    <h4 className="text-lg font-bold text-card-foreground">{bearer.name}</h4>
-                    <p className="text-primary font-medium">{bearer.role}</p>
-                  </div>
-                </Card>
-              </ElectricBorder>
-            </ScrollReveal>
-          ))}
+        <div className="mt-12">
+            <ChromaGrid items={officeBearers} />
         </div>
       </section>
     </div>
