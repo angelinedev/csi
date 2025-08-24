@@ -3,6 +3,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
+import DarkVeil from '@/components/shared/dark-veil';
 
 export const metadata: Metadata = {
   title: 'CSI Cyberspace - JCE',
@@ -32,6 +33,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="fixed inset-0 -z-10">
+            <DarkVeil
+              noiseIntensity={0.03}
+              scanlineIntensity={0.05}
+              scanlineFrequency={30}
+              warpAmount={0.3}
+              hueShift={-20}
+              speed={0.2}
+            />
+          </div>
           <Header />
           <main className="overflow-x-hidden">{children}</main>
           <Toaster />
