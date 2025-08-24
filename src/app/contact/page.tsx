@@ -1,6 +1,6 @@
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { ContactForm } from '@/components/contact-form';
-import { GlowingCard } from '@/components/shared/glowing-card';
+import { ElectricBorderCard } from '@/components/shared/electric-border-card';
 import { Mail, User, Shield } from 'lucide-react';
 
 const contactDetails = [
@@ -40,7 +40,7 @@ export default function ContactPage() {
             </ScrollReveal>
             {contactDetails.map((contact, index) => (
                 <ScrollReveal key={contact.name} delay={100 * index}>
-                    <GlowingCard className="p-6">
+                    <ElectricBorderCard className="p-6">
                         <div className="flex items-center gap-4">
                             <div className="p-3 bg-primary/10 rounded-full">
                                 <contact.icon className="w-6 h-6 text-primary" />
@@ -50,7 +50,7 @@ export default function ContactPage() {
                                 <p className="text-sm text-muted-foreground">{contact.role}</p>
                             </div>
                         </div>
-                    </GlowingCard>
+                    </ElectricBorderCard>
                 </ScrollReveal>
             ))}
         </div>

@@ -1,5 +1,5 @@
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { GlowingCard } from '@/components/shared/glowing-card';
+import { ElectricBorderCard } from '@/components/shared/electric-border-card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Users } from 'lucide-react';
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {officeBearers.map((bearer, index) => (
             <ScrollReveal key={bearer.name} delay={100 * (index % 4)}>
-              <GlowingCard className="h-full">
+              <ElectricBorderCard className="h-full">
                 <div className="flex flex-col items-center text-center p-6">
                   <Avatar className="w-24 h-24 mb-4 border-4 border-primary/50">
                     <AvatarImage src={`https://placehold.co/100x100.png`} data-ai-hint="portrait person" />
@@ -62,7 +62,7 @@ export default function AboutPage() {
                   <h4 className="text-lg font-bold text-card-foreground">{bearer.name}</h4>
                   <p className="text-primary font-medium">{bearer.role}</p>
                 </div>
-              </GlowingCard>
+              </ElectricBorderCard>
             </ScrollReveal>
           ))}
         </div>

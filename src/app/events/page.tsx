@@ -1,5 +1,5 @@
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import { GlowingCard } from '@/components/shared/glowing-card';
+import { ElectricBorderCard } from '@/components/shared/electric-border-card';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -59,7 +59,7 @@ export default function EventsPage() {
       <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
         {events.map((event, index) => (
           <ScrollReveal key={event.title} delay={100 * (index % 2)}>
-            <GlowingCard className="h-full group overflow-hidden">
+            <ElectricBorderCard className="h-full group overflow-hidden">
                 <div className="flex flex-col md:flex-row h-full">
                   <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
                     <Image
@@ -94,7 +94,7 @@ export default function EventsPage() {
                     )}
                   </div>
                 </div>
-            </GlowingCard>
+            </ElectricBorderCard>
           </ScrollReveal>
         ))}
       </div>

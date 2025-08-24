@@ -64,3 +64,14 @@
     @apply bg-card/50 backdrop-blur-lg border border-white/10;
   }
 }
+
+@layer utilities {
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
