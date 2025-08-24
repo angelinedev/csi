@@ -57,9 +57,8 @@ export default function ContactPage() {
 
         <div className="lg:col-span-3">
           <ScrollReveal delay={200}>
-            <div className="relative p-8 rounded-2xl overflow-hidden">
-                <div className="absolute inset-0 bg-plasma-purple animate-plasma-flow bg-[size:200%_200%] opacity-30"></div>
-                <div className="relative z-10 p-4 sm:p-8 rounded-2xl glassmorphic">
+            <div className="relative p-8 rounded-2xl overflow-hidden glassmorphic">
+                <div className="relative z-10 p-4 sm:p-8 rounded-2xl ">
                     <div className="flex items-center gap-4 mb-6">
                         <Mail className="w-8 h-8 text-accent" />
                         <h2 className="text-3xl font-bold">Send us a Message</h2>
