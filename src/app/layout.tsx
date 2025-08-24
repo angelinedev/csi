@@ -40,7 +40,7 @@ export default function RootLayout({
               scanlineIntensity={0.05}
               scanlineFrequency={30}
               warpAmount={0.3}
-              hueShift={40}
+              hueShift={0}
               speed={0.2}
             />
           </div>

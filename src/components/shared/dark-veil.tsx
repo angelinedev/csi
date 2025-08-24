@@ -148,7 +148,7 @@ export default function DarkVeil({
     const loop = () => {
       program.uniforms.uTime.value =
         ((performance.now() - start) / 1000) * speed;
-      program.uniforms.uHueShift.value = hueShift;
+      program.uniforms.uHueShift.value = resolvedTheme === 'light' ? -120 : hueShift;
       program.uniforms.uNoise.value = noiseIntensity;
       program.uniforms.uScan.value = scanlineIntensity;
       program.uniforms.uScanFreq.value = scanlineFrequency;
