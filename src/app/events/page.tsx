@@ -60,7 +60,10 @@ export default function EventsPage() {
       <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
         {events.map((event, index) => (
           <ScrollReveal key={event.title} delay={100 * (index % 2)}>
-            <ElectricBorder className="h-full group rounded-lg">
+            <ElectricBorder
+              className="h-full group"
+              style={{ borderRadius: 'var(--radius)' }}
+            >
               <Card className="h-full group overflow-hidden glassmorphic rounded-lg">
                 <div className="flex flex-col md:flex-row h-full">
                   <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
