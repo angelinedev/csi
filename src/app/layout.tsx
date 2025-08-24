@@ -7,8 +7,7 @@ import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { PlexusBackground } from '@/components/shared/plexus-background';
-import { DarkVeil } from '@/components/shared/dark-veil';
+import Silk from '@/components/shared/silk-background';
 
 
 export default function RootLayout({
@@ -46,13 +45,9 @@ export default function RootLayout({
         >
           <div className="fixed inset-0 -z-10">
             {mounted && (
-              <>
-                {resolvedTheme === 'light' ? (
-                  <PlexusBackground />
-                ) : (
-                  <DarkVeil />
-                )}
-              </>
+                <Silk
+                  color={resolvedTheme === 'light' ? '#E5E7EB' : '#1A122B'}
+                />
             )}
           </div>
           <Header />
