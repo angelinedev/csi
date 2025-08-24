@@ -5,7 +5,6 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
-import { Plasma } from '@/components/shared/plasma';
 
 
 export default function RootLayout({
@@ -35,8 +34,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed inset-0 -z-10 h-full w-full bg-background">
-            <Plasma />
+          <div className="fixed inset-0 -z-10 h-full w-full bg-background animated-gradient">
           </div>
           <Header />
           <main className="overflow-x-hidden">{children}</main>

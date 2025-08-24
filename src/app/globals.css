@@ -63,6 +63,11 @@
   .glassmorphic {
     @apply bg-card/50 backdrop-blur-lg border border-white/10;
   }
+  .animated-gradient {
+    animation: gradient-animation 10s ease infinite;
+    background: radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.1), hsl(var(--background)) 70%);
+    background-size: 200% 200%;
+  }
 }
 
 @layer utilities {
@@ -73,5 +78,11 @@
     to {
       transform: rotate(360deg);
     }
+  }
+
+  @keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }
