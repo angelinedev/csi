@@ -5,6 +5,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
+import { useEffect, useRef } from 'react';
 
 
 export default function RootLayout({
@@ -12,6 +13,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const spotlightRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (spotlightRef.current) {
+        spotlightRef.current.style.background = `radial-gradient(circle at ${
+          e.clientX
+        }px ${
+          e.clientY
+        }px, hsl(var(--primary) / 0.1), hsl(var(--background)) 70%)`;
+      }
+    };
+    window.addEventListener('mousemove', handler);
+    return () => window.removeEventListener('mousemove', handler);
+  }, []);
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -34,7 +50,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed inset-0 -z-10 h-full w-full bg-background animated-gradient">
+          <div ref={spotlightRef} className="fixed inset-0 -z-10 h-full w-full bg-background animated-gradient">
           </div>
           <Header />
           <main className="overflow-x-hidden">{children}</main>
