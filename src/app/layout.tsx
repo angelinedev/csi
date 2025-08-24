@@ -6,8 +6,10 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
 import { useEffect, useState } from 'react';
-import Beams from '@/components/shared/beams-background';
 import { useTheme } from 'next-themes';
+import { PlexusBackground } from '@/components/shared/plexus-background';
+import { DarkVeil } from '@/components/shared/dark-veil';
+
 
 export default function RootLayout({
   children,
@@ -20,29 +22,6 @@ export default function RootLayout({
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const beamsConfig = {
-    light: {
-      lightColor: '#673AB7',
-      speed: 1,
-      beamNumber: 10,
-      beamWidth: 1.5,
-      beamHeight: 12,
-      noiseIntensity: 1.2,
-      scale: 0.15,
-    },
-    dark: {
-      lightColor: '#673AB7',
-      speed: 2,
-      beamNumber: 12,
-      beamWidth: 2,
-      beamHeight: 15,
-      noiseIntensity: 1.75,
-      scale: 0.2,
-    },
-  };
-  
-  const currentConfig = resolvedTheme === 'light' ? beamsConfig.light : beamsConfig.dark;
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -67,15 +46,13 @@ export default function RootLayout({
         >
           <div className="fixed inset-0 -z-10">
             {mounted && (
-              <Beams
-                lightColor={currentConfig.lightColor}
-                speed={currentConfig.speed}
-                beamNumber={currentConfig.beamNumber}
-                beamWidth={currentConfig.beamWidth}
-                beamHeight={currentConfig.beamHeight}
-                noiseIntensity={currentConfig.noiseIntensity}
-                scale={currentConfig.scale}
-              />
+              <>
+                {resolvedTheme === 'light' ? (
+                  <PlexusBackground />
+                ) : (
+                  <DarkVeil />
+                )}
+              </>
             )}
           </div>
           <Header />
