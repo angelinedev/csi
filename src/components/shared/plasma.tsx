@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import React, { useEffect, useRef } from "react";
-import { Renderer, Program, Mesh, Triangle } from "ogl";
+import { Renderer, Program, Mesh, Triangle, Camera } from "ogl";
 
 interface PlasmaProps {
   color?: string;
@@ -127,6 +127,9 @@ export const Plasma: React.FC<PlasmaProps> = ({
     containerRef.current.appendChild(canvas);
 
     const geometry = new Triangle(gl);
+    const camera = new Camera(gl);
+    camera.position.z = 1;
+
 
     const program = new Program(gl, {
       vertex: vertex,
@@ -186,7 +189,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
       }
 
       (program.uniforms.iTime as any).value = timeValue;
-      renderer.render({ scene: mesh });
+      renderer.render({ scene: mesh, camera });
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
