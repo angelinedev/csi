@@ -1,3 +1,4 @@
+
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -45,7 +46,7 @@ export default function Home() {
         
         <div className="relative z-10 px-4">
           <ScrollReveal>
-            <h1 className="text-4xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-primary-foreground to-muted-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
               Computer Society of India
             </h1>
             <p className="mt-4 text-lg font-medium text-primary md:text-xl">
