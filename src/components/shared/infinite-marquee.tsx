@@ -46,8 +46,8 @@ const InfiniteMarquee: React.FC<InfiniteMarqueeProps> = ({ items, options, class
     }
   }, [emblaApi, onSelect]);
 
-  // Double the items for a seamless loop appearance, especially with fewer items
-  const displayItems = [...items, ...items, ...items];
+  // Double the items for a seamless loop appearance
+  const displayItems = [...items, ...items];
 
 
   return (
@@ -58,7 +58,7 @@ const InfiniteMarquee: React.FC<InfiniteMarqueeProps> = ({ items, options, class
             key={index}
             className="relative flex-[0_0_80%] sm:flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_25%] xl:flex-[0_0_20%] mx-4 transition-transform duration-500 ease-out"
             style={{
-              transform: `scale(${emblaApi?.selectedScrollSnap() === (index % items.length) ? '1.05' : '0.9'})`,
+              transform: `scale(${selectedIndex === (index % items.length) ? '1.05' : '0.9'})`,
             }}
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl glowing-border group">
