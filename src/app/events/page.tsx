@@ -9,39 +9,66 @@ import { Card } from '@/components/ui/card';
 
 const events = [
   {
-    title: 'Cyberfest 2024',
-    description: 'A national level technical symposium with a series of workshops, competitions, and talks from industry leaders.',
-    date: 'October 26, 2024',
-    time: '9:00 AM - 5:00 PM',
+    title: 'Upcoming Event',
+    description: 'Details for the next event will be announced soon. Stay tuned!',
+    date: 'Upcoming',
+    time: 'Upcoming',
     image: 'https://placehold.co/600x400.png',
-    hint: 'technology festival',
+    hint: 'coming soon',
     status: 'Upcoming',
   },
   {
-    title: 'AI & Machine Learning Workshop',
-    description: 'A hands-on workshop covering the fundamentals of Artificial Intelligence and Machine Learning with practical examples.',
-    date: 'September 15, 2024',
-    time: '10:00 AM - 4:00 PM',
+    title: 'Guest Lecture: Benefits of CSI',
+    description: 'An insightful session on the benefits of being a part of the Computer Society of India.',
+    date: 'August 08, 2024',
+    time: '2:00 PM - 4:00 PM',
     image: 'https://placehold.co/600x400.png',
-    hint: 'ai workshop',
-    status: 'Upcoming',
-  },
-  {
-    title: 'Hackathon: Code Genesis',
-    description: 'A 24-hour coding competition to build innovative solutions for real-world problems. Exciting prizes to be won!',
-    date: 'August 20, 2024',
-    time: 'Starts 10:00 AM',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'hackathon computer',
+    hint: 'lecture benefit',
     status: 'Past',
   },
   {
-    title: 'Intro to Quantum Computing',
-    description: 'A seminar exploring the revolutionary world of quantum computing and its potential impact on technology.',
-    date: 'July 05, 2024',
-    time: '2:00 PM - 4:00 PM',
+    title: 'ALCODE',
+    description: 'A competitive coding contest to challenge your algorithmic skills.',
+    date: 'August 21, 2024',
+    time: '10:00 AM onwards',
     image: 'https://placehold.co/600x400.png',
-    hint: 'quantum computing',
+    hint: 'algorithm code',
+    status: 'Past',
+  },
+  {
+    title: 'HACKATHON: INNOVEXON',
+    description: 'A 24-hour hackathon to build innovative solutions and win exciting prizes.',
+    date: 'September 04, 2024',
+    time: 'All Day',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'hackathon innovation',
+    status: 'Past',
+  },
+  {
+    title: 'CODE UNRAVEL',
+    description: 'Unravel complex coding problems and showcase your debugging prowess.',
+    date: 'March 06, 2025',
+    time: '1:00 PM - 3:00 PM',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'code puzzle',
+    status: 'Past',
+  },
+  {
+    title: 'WORKSHOP: NETWORKING AND COMMUNICATION',
+    description: 'A hands-on workshop on the fundamentals of networking and communication protocols.',
+    date: 'April 02, 2025',
+    time: '10:00 AM - 1:00 PM',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'network workshop',
+    status: 'Past',
+  },
+  {
+    title: 'POSTER - ON',
+    description: 'A poster presentation competition to visualize and present your technical ideas.',
+    date: 'April 23, 2025',
+    time: '11:00 AM - 1:00 PM',
+    image: 'https://placehold.co/600x400.png',
+    hint: 'poster presentation',
     status: 'Past',
   },
 ];
@@ -58,14 +85,14 @@ export default function EventsPage() {
         </p>
       </ScrollReveal>
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 grid-flow-row-dense">
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8" style={{ gridAutoRows: '1fr' }}>
         {events.map((event, index) => (
           <ScrollReveal key={event.title} delay={100 * (index % 2)}>
             <ElectricBorder
               className="h-full group"
               style={{ borderRadius: 'var(--radius)' }}
             >
-              <Card className="h-full group overflow-hidden glassmorphic rounded-lg">
+              <Card className="h-full group overflow-hidden glassmorphic rounded-lg flex flex-col">
                 <div className="flex flex-col md:flex-row h-full">
                   <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
                     <Image
