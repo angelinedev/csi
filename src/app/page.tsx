@@ -2,37 +2,38 @@
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import InfiniteMarquee from '@/components/shared/infinite-marquee';
+import RollingGallery from '@/components/shared/rolling-gallery';
 
 const pastEvents = [
   {
     title: 'ALCODE',
-    img: 'https://placehold.co/600x400.png',
+    img: 'https://placehold.co/600/400.png',
     hint: 'algorithm code',
   },
   {
     title: 'HACKATHON: INNOVEXON',
-    img: 'https://placehold.co/600x400.png',
+    img: 'https://placehold.co/600/400.png',
     hint: 'hackathon innovation',
   },
   {
     title: 'CODE UNRAVEL',
-    img: 'https://placehold.co/600x400.png',
+    img: 'https://placehold.co/600/400.png',
     hint: 'code puzzle',
   },
   {
     title: 'WORKSHOP: NETWORKING AND COMMUNICATION',
-    img: 'https://placehold.co/600x400.png',
+    img: 'https://placehold.co/600/400.png',
     hint: 'network workshop',
   },
   {
     title: 'POSTER - ON',
-    img: 'https://placehold.co/600x400.png',
+    img: 'https://placehold.co/600/400.png',
     hint: 'poster presentation',
   },
 ];
 
 export default function Home() {
+  const eventImages = pastEvents.map(event => event.img);
   return (
     <div className="animate-fade-in-up">
       <section className="relative flex h-[80vh] min-h-[500px] items-center justify-center text-center">
@@ -75,7 +76,7 @@ export default function Home() {
           </ScrollReveal>
         </div>
         <div className="mt-12">
-            <InfiniteMarquee items={pastEvents} />
+            <RollingGallery images={eventImages} autoplay pauseOnHover />
         </div>
       </section>
     </div>

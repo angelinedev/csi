@@ -1,85 +1,83 @@
+import { ScrollReveal } from '@/components/shared/scroll-reveal';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import RollingGallery from '@/components/shared/rolling-gallery';
 
-'use client';
+const pastEvents = [
+  {
+    title: 'ALCODE',
+    img: 'https://placehold.co/600/400.png',
+    hint: 'algorithm code',
+  },
+  {
+    title: 'HACKATHON: INNOVEXON',
+    img: 'https://placehold.co/600/400.png',
+    hint: 'hackathon innovation',
+  },
+  {
+    title: 'CODE UNRAVEL',
+    img: 'https://placehold.co/600/400.png',
+    hint: 'code puzzle',
+  },
+  {
+    title: 'WORKSHOP: NETWORKING AND COMMUNICATION',
+    img: 'https://placehold.co/600/400.png',
+    hint: 'network workshop',
+  },
+  {
+    title: 'POSTER - ON',
+    img: 'https://placehold.co/600/400.png',
+    hint: 'poster presentation',
+  },
+];
 
-import React, { useState, useEffect, useCallback } from 'react';
-import useEmblaCarousel, { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
-
-interface Item {
-  title: string;
-  img: string;
-  hint?: string;
-}
-
-interface InfiniteMarqueeProps {
-  items: Item[];
-  options?: EmblaOptionsType;
-  className?: string;
-}
-
-const InfiniteMarquee: React.FC<InfiniteMarqueeProps> = ({ items, options, className }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { 
-      loop: true, 
-      align: 'center',
-      containScroll: 'trimSnaps',
-      ...options 
-    },
-    [Autoplay({ playOnInit: true, delay: 3000, stopOnInteraction: false })]
-  );
-  
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, []);
-
-  useEffect(() => {
-    if (emblaApi) {
-      onSelect(emblaApi);
-      emblaApi.on('select', onSelect);
-      return () => {
-        emblaApi.off('select', onSelect);
-      };
-    }
-  }, [emblaApi, onSelect]);
-
-  // Double the items for a seamless loop appearance
-  const displayItems = [...items, ...items];
-
-
+export default function Home() {
+  const eventImages = pastEvents.map(event => event.img);
   return (
-    <div className={cn('overflow-hidden w-full', className)} ref={emblaRef}>
-      <div className="flex">
-        {displayItems.map((item, index) => (
-          <div
-            key={index}
-            className="relative flex-[0_0_80%] sm:flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_25%] xl:flex-[0_0_20%] mx-4 transition-transform duration-500 ease-out"
-            style={{
-              transform: `scale(${selectedIndex === (index % items.length) ? '1.05' : '0.9'})`,
-            }}
-          >
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl glowing-border group">
-                <Image
-                    src={item.img}
-                    alt={item.title}
-                    width={600}
-                    height={400}
-                    data-ai-hint={item.hint || 'event picture'}
-                    className="object-cover w-full h-full"
-                />
-                <div className="absolute bottom-0 left-0 w-full h-2/5 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
-                <div className="absolute bottom-0 left-0 p-4 w-full">
-                    <h3 className="text-white font-bold text-lg drop-shadow-md">{item.title}</h3>
-                </div>
+    <div className="animate-fade-in-up">
+      <section className="relative flex h-[80vh] min-h-[500px] items-center justify-center text-center">
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background to-transparent" />
+        
+        <div className="relative z-10 px-4">
+          <ScrollReveal>
+            <h1 className="text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+              Computer Society of India
+            </h1>
+            <p className="mt-4 text-lg font-medium text-primary md:text-xl">
+              Jerusalem College of Engineering Chapter
+            </p>
+            <p className="mt-6 max-w-2xl mx-auto text-muted-foreground md:text-lg">
+              Exploring the frontiers of technology. Fostering innovation and collaboration in the digital age.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={200}>
+            <div className="mt-8 flex justify-center gap-4">
+              <Button asChild size="lg">
+                <Link href="/events">Upcoming Events</Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <Link href="/about">About Us</Link>
+              </Button>
             </div>
-          </div>
-        ))}
-      </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
+              Moments from Our Past Events
+            </h2>
+            <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
+              A glimpse into the vibrant and engaging events hosted by CSI-JCE.
+            </p>
+          </ScrollReveal>
+        </div>
+        <div className="mt-12">
+            <RollingGallery images={eventImages} autoplay pauseOnHover />
+        </div>
+      </section>
     </div>
   );
-};
-
-export default InfiniteMarquee;
+}
