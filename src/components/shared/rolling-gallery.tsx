@@ -10,43 +10,44 @@ import {
   type ResolvedValues,
 } from "framer-motion";
 
-const IMGS: string[] = [
-  "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1495103033382-fe343886b671?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1506781961370-37a89d6b3095?q=80&w=3264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1599576838688-8a6c11263108?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1494094892896-7f14a4433b7a?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_photo-1664910706524-e783eed89e71?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1503788311183-fa3bf9c4bc32?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1585970480901-90d6bb2a48b5?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+interface GalleryItem {
+  title: string;
+  img: string;
+  hint: string;
+}
+
+const defaultItems: GalleryItem[] = [
+    { title: 'Event 1', img: 'https://placehold.co/600/400.png', hint: 'event one' },
+    { title: 'Event 2', img: 'https://placehold.co/600/400.png', hint: 'event two' },
+    { title: 'Event 3', img: 'https://placehold.co/600/400.png', hint: 'event three' },
+    { title: 'Event 4', img: 'https://placehold.co/600/400.png', hint: 'event four' },
+    { title: 'Event 5', img: 'https://placehold.co/600/400.png', hint: 'event five' },
 ];
 
 interface RollingGalleryProps {
   autoplay?: boolean;
   pauseOnHover?: boolean;
-  images?: string[];
+  items?: GalleryItem[];
 }
 
 const RollingGallery: React.FC<RollingGalleryProps> = ({
   autoplay = false,
   pauseOnHover = false,
-  images = [],
+  items = [],
 }) => {
-  const galleryImages = images.length > 0 ? images : IMGS;
+  const galleryItems = items.length > 0 ? items : defaultItems;
 
   const [isScreenSizeSm, setIsScreenSizeSm] = useState<boolean>(false);
   
   useEffect(() => {
     const handleResize = () => setIsScreenSizeSm(window.innerWidth <= 640);
-    handleResize(); // Set initial value
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const cylinderWidth: number = isScreenSizeSm ? 1100 : 1800;
-  const faceCount: number = galleryImages.length;
+  const faceCount: number = galleryItems.length;
   const faceWidth: number = (cylinderWidth / faceCount) * 1.5;
   const radius: number = cylinderWidth / (2 * Math.PI);
 
@@ -77,8 +78,7 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
     } else {
       controls.stop();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoplay]);
+  }, [autoplay, controls, rotation]);
 
   const handleUpdate = (latest: ResolvedValues) => {
     if (typeof latest.rotateY === "number") {
@@ -152,7 +152,7 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
           }}
           className="flex min-h-[200px] cursor-grab items-center justify-center [transform-style:preserve-3d]"
         >
-          {galleryImages.map((url, i) => (
+          {galleryItems.map((item, i) => (
             <div
               key={i}
               className="group absolute flex h-fit items-center justify-center p-[8%] [backface-visibility:hidden] md:p-[6%]"
@@ -161,11 +161,17 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
                 transform: `rotateY(${(360 / faceCount) * i}deg) translateZ(${radius}px)`,
               }}
             >
-              <img
-                src={url}
-                alt="gallery"
-                className="pointer-events-none h-[180px] w-[320px] rounded-lg border-2 border-primary/50 object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-              />
+              <figure className="pointer-events-none w-[320px] rounded-lg border-2 border-primary/50 object-cover transition-transform duration-300 ease-out group-hover:scale-105 overflow-hidden">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  data-ai-hint={item.hint}
+                  className="h-[180px] w-full object-cover"
+                />
+                <figcaption className="p-3 text-center text-sm font-medium text-foreground bg-gradient-to-t from-black/50 to-transparent">
+                  {item.title}
+                </figcaption>
+              </figure>
             </div>
           ))}
         </motion.div>
