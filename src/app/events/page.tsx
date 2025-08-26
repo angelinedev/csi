@@ -18,15 +18,6 @@ const events = [
     status: 'Upcoming',
   },
   {
-    title: 'Guest Lecture: Benefits of CSI',
-    description: 'An insightful session on the benefits of being a part of the Computer Society of India.',
-    date: 'August 08, 2024',
-    time: '2:00 PM - 4:00 PM',
-    image: 'https://placehold.co/600x400.png',
-    hint: 'lecture benefit',
-    status: 'Past',
-  },
-  {
     title: 'ALCODE',
     description: 'A competitive coding contest to challenge your algorithmic skills.',
     date: 'August 21, 2024',
