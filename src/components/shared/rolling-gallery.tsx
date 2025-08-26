@@ -6,8 +6,8 @@ import {
   useMotionValue,
   useAnimation,
   useTransform,
-  PanInfo,
-  ResolvedValues,
+  type PanInfo,
+  type ResolvedValues,
 } from "framer-motion";
 
 const IMGS: string[] = [

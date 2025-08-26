@@ -51,7 +51,7 @@ export function Header() {
                 <Link href={href}>
                   {label}
                   {isActive && (
-                    <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-1 rounded-full bg-accent shadow-[0_0_8px_theme(colors.accent)]" />
+                    <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-1 rounded-full bg-accent shadow-[0_0_8px_hsl(var(--accent))]" />
                   )}
                 </Link>
               </Button>
