@@ -39,6 +39,15 @@ export default function AboutPage() {
 
       <ScrollReveal delay={200}>
         <div className="mt-12 max-w-4xl mx-auto p-8 rounded-xl glassmorphic">
+          <h3 className="text-2xl font-bold text-primary">About the Computer Society of India</h3>
+          <p className="mt-4 text-foreground/80">
+            The Computer Society of India (CSI), founded in 1965, is India’s oldest and largest professional body for IT professionals. It promotes knowledge-sharing, skill development, and innovation in computing and emerging technologies. CSI has over 100,000 members across academia, industry, and student communities. It organizes seminars, workshops, certifications, and national-level competitions to foster tech excellence. Our college is proudly affiliated with the CSI Kancheepuram Chapter, a vibrant regional hub known for hosting dynamic student conventions and technical events.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={400}>
+        <div className="mt-12 max-w-4xl mx-auto p-8 rounded-xl glassmorphic">
           <h3 className="text-2xl font-bold text-primary">Our Mission</h3>
           <p className="mt-4 text-foreground/80">
             Our mission is to facilitate research, knowledge sharing, and career development among students in the field of computer science. We organize workshops, seminars, and competitions to provide a platform for students to showcase their skills and learn from industry experts.
