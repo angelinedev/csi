@@ -6,23 +6,23 @@ import ChromaGrid, {
 } from '@/components/shared/chroma-grid';
 
 const officeBearersData = [
-  { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI' },
-  { name: 'Mahendra Udayakumar', role: 'President' },
-  { name: 'Megha Shree G', role: 'Vice President' },
-  { name: 'Syed Tamim Mehdi', role: 'Secretary' },
-  { name: 'Aliah Ridha A', role: 'Joint Secretary' },
-  { name: 'Deepika R', role: 'Treasurer' },
-  { name: 'Rajadurga R', role: 'Joint Treasurer' },
-  { name: 'Manikandan Askar K', role: 'Executive Member' },
-  { name: 'Angeline Hepzibah J', role: 'Executive Member' },
-  { name: 'Shruthi D', role: 'Executive Member' },
-  { name: 'Sharan S', role: 'Executive Member' },
+  { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://placehold.co/300x300.png' },
+  { name: 'Mahendra Udayakumar', role: 'President', image: 'https://placehold.co/300x300.png' },
+  { name: 'Megha Shree G', role: 'Vice President', image: 'https://placehold.co/300x300.png' },
+  { name: 'Syed Tamim Mehdi', role: 'Secretary', image: 'https://placehold.co/300x300.png' },
+  { name: 'Aliah Ridha A', role: 'Joint Secretary', image: 'https://placehold.co/300x300.png' },
+  { name: 'Deepika R', role: 'Treasurer', image: 'https://placehold.co/300x300.png' },
+  { name: 'Rajadurga R', role: 'Joint Treasurer', image: 'https://placehold.co/300x300.png' },
+  { name: 'Manikandan Askar K', role: 'Executive Member', image: 'https://placehold.co/300x300.png' },
+  { name: 'Angeline Hepzibah J', role: 'Executive Member', image: '/p/CgABCTTbA1kSDAgAEgYIgJm2qAY=/angeline.jpeg' },
+  { name: 'Shruthi D', role: 'Executive Member', image: 'https://placehold.co/300x300.png' },
+  { name: 'Sharan S', role: 'Executive Member', image: 'https://placehold.co/300x300.png' },
 ];
 
 const officeBearers: ChromaItem[] = officeBearersData.map((person) => ({
     title: person.name,
     subtitle: person.role,
-    image: `https://placehold.co/300x300.png`,
+    image: person.image,
 }));
 
 export default function AboutPage() {
