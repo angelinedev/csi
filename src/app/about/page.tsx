@@ -6,7 +6,7 @@ import ChromaGrid, {
 } from '@/components/shared/chroma-grid';
 
 const officeBearersData = [
-  { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://placehold.co/300x300.png' },
+  { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756303669/Mrs._Vanitha_Sheba_M_wfid1m.avif' },
   { name: 'Mahendra Udayakumar', role: 'President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/Mahendra_mt6gzd.avif' },
   { name: 'Megha Shree G', role: 'Vice President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294108/IMG_20250216_213647_995_bpqp5m.avif' },
   { name: 'Syed Tamim Mehdi', role: 'Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294109/Tamim_fc3rns.avif' },
