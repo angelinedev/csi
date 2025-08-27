@@ -13,7 +13,7 @@ const officeBearersData = [
   { name: 'Aliah Ridha A', role: 'Joint Secretary', image: 'https://placehold.co/300x300.png' },
   { name: 'Deepika R', role: 'Treasurer', image: 'https://placehold.co/300x300.png' },
   { name: 'Rajadurga R', role: 'Joint Treasurer', image: 'https://placehold.co/300x300.png' },
-  { name: 'Manikandan Askar K', role: 'Executive Member', image: 'https://placehold.co/300x300.png' },
+  { name: 'Manikandan Askar K', role: 'Executive Member', image: '/p/CgABCNzbA1kSDAgAEgYIwIC6qAY=/manikandan.jpeg' },
   { name: 'Angeline Hepzibah J', role: 'Executive Member', image: '/p/CgABCTTbA1kSDAgAEgYIgJm2qAY=/angeline.jpeg' },
   { name: 'Shruthi D', role: 'Executive Member', image: 'https://placehold.co/300x300.png' },
   { name: 'Sharan S', role: 'Executive Member', image: 'https://placehold.co/300x300.png' },
