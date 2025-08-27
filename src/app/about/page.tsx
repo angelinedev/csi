@@ -7,16 +7,16 @@ import ChromaGrid, {
 
 const officeBearersData = [
   { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://placehold.co/300x300.png' },
-  { name: 'Mahendra Udayakumar', role: 'President', image: 'https://placehold.co/300x300.png' },
-  { name: 'Megha Shree G', role: 'Vice President', image: 'https://placehold.co/300x300.png' },
-  { name: 'Syed Tamim Mehdi', role: 'Secretary', image: 'https://placehold.co/300x300.png' },
-  { name: 'Aliah Ridha A', role: 'Joint Secretary', image: 'https://placehold.co/300x300.png' },
-  { name: 'Deepika R', role: 'Treasurer', image: 'https://placehold.co/300x300.png' },
-  { name: 'Rajadurga R', role: 'Joint Treasurer', image: 'https://placehold.co/300x300.png' },
-  { name: 'Manikandan Askar K', role: 'Executive Member', image: 'https://placehold.co/300x300.png' },
-  { name: 'Angeline Hepzibah J', role: 'Executive Member', image: 'https://placehold.co/300x300.png' },
-  { name: 'Shruthi D', role: 'Executive Member', image: 'https://placehold.co/300x300.png' },
-  { name: 'Sharan S', role: 'Executive Member', image: 'https://placehold.co/300x300.png' },
+  { name: 'Mahendra Udayakumar', role: 'President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/Mahendra_mt6gzd.avif' },
+  { name: 'Megha Shree G', role: 'Vice President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294108/IMG_20250216_213647_995_bpqp5m.avif' },
+  { name: 'Syed Tamim Mehdi', role: 'Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294109/Tamim_fc3rns.avif' },
+  { name: 'Aliah Ridha A', role: 'Joint Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294109/Aliah_Ridha_A_lzsdjd.avif' },
+  { name: 'Deepika R', role: 'Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294107/Deepika_R_zdqzcr.avif' },
+  { name: 'Rajadurga R', role: 'Joint Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/IMG-20240816-WA0040_2_bz7yvv.avif' },
+  { name: 'Manikandan Askar K', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/askar1_fyldll.avif' },
+  { name: 'Angeline Hepzibah J', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294106/Angeline_jz23xa.avif' },
+  { name: 'Shruthi D', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294112/IMG_0620_1_c49qpz.avif' },
+  { name: 'Sharan S', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294104/SHARAN_S_dvjgti.avif' },
 ];
 
 const officeBearers: ChromaItem[] = officeBearersData.map((person) => ({
