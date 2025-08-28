@@ -7,28 +7,43 @@ import RollingGallery from '@/components/shared/rolling-gallery';
 const pastEvents = [
   {
     title: 'ALCODE',
-    img: 'https://placehold.co/600/400.png',
+    img: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756404618/2_nyc6vo.avif',
+    hint: 'algorithm code',
+  },
+  {
+    title: 'ALCODE',
+    img: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756404617/1_ojyxae.avif',
     hint: 'algorithm code',
   },
   {
     title: 'HACKATHON: INNOVEXON',
-    img: 'https://placehold.co/600/400.png',
+    img: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756404683/Picture1_uolfy0.avif',
+    hint: 'hackathon innovation',
+  },
+    {
+    title: 'HACKATHON: INNOVEXON',
+    img: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756404682/Picture2_lrdi1k.avif',
     hint: 'hackathon innovation',
   },
   {
     title: 'CODE UNRAVEL',
-    img: 'https://placehold.co/600/400.png',
+    img: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756404647/Picture1_jeecol.avif',
+    hint: 'code puzzle',
+  },
+  {
+    title: 'CODE UNRAVEL',
+    img: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756404645/Picture2_ongdpj.avif',
     hint: 'code puzzle',
   },
   {
     title: 'WORKSHOP: NETWORKING AND COMMUNICATION',
-    img: 'https://placehold.co/600/400.png',
+    img: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756404709/Picture2_cxovol.avif',
     hint: 'network workshop',
   },
   {
-    title: 'POSTER - ON',
-    img: 'https://placehold.co/600/400.png',
-    hint: 'poster presentation',
+    title: 'WORKSHOP: NETWORKING AND COMMUNICATION',
+    img: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756404707/Picture1_czskry.avif',
+    hint: 'network workshop',
   },
 ];
 

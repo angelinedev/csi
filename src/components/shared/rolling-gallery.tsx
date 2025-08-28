@@ -162,15 +162,15 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
               }}
             >
               <figure className="pointer-events-none w-[320px] rounded-lg border-2 border-primary/50 object-cover transition-transform duration-300 ease-out group-hover:scale-105 overflow-hidden">
+                <figcaption className="p-3 text-center text-sm font-medium text-foreground bg-background/80 backdrop-blur-sm">
+                  {item.title}
+                </figcaption>
                 <img
                   src={item.img}
                   alt={item.title}
                   data-ai-hint={item.hint}
                   className="h-[180px] w-full object-cover"
                 />
-                <figcaption className="p-3 text-center text-sm font-medium text-foreground bg-gradient-to-t from-black/50 to-transparent">
-                  {item.title}
-                </figcaption>
               </figure>
             </div>
           ))}
