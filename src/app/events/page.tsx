@@ -96,12 +96,12 @@ export default function EventsPage() {
                     />
                   </div>
                   <div className="p-6 flex flex-col md:w-3/5">
-                    <div className="flex justify-between items-center">
-                      <h3 className="text-2xl font-bold text-card-foreground">{event.title}</h3>
-                      <Badge variant={event.status === 'Upcoming' ? 'default' : 'secondary'} className="ml-4 shrink-0 bg-primary/20 text-primary border-primary/30">
+                    <div className="flex justify-between items-start mb-2">
+                      <Badge variant={event.status === 'Upcoming' ? 'default' : 'secondary'} className="bg-primary/20 text-primary border-primary/30">
                         {event.status}
                       </Badge>
                     </div>
+                    <h3 className="text-2xl font-bold text-card-foreground">{event.title}</h3>
                     <p className="mt-2 text-muted-foreground flex-grow">{event.description}</p>
                     <div className="mt-4 space-y-2 text-sm text-foreground/70">
                       <div className="flex items-center gap-2">
