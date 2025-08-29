@@ -1,7 +1,7 @@
 
 'use client';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import ElectricBorder from '@/components/shared/electric-border';
+import { GlowingCard } from '@/components/shared/glowing-card';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -62,9 +62,9 @@ export default function AboutPage() {
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 justify-items-center">
             {officeBearersData.map((person, index) => (
                 <ScrollReveal key={index} delay={100 * (index % 4)}>
-                    <ElectricBorder className="group" style={{ borderRadius: 'var(--radius)' }}>
-                        <Card className="w-full max-w-sm overflow-hidden glassmorphic rounded-lg">
-                            <div className="relative h-64 w-full">
+                    <GlowingCard className="w-full max-w-sm group">
+                        <Card className="w-full max-w-sm overflow-hidden glassmorphic rounded-lg bg-transparent">
+                            <div className="relative h-64 w-full overflow-hidden">
                                 <Image
                                     src={person.image}
                                     alt={`Portrait of ${person.name}`}
@@ -78,7 +78,7 @@ export default function AboutPage() {
                                 <p className="text-sm text-primary">{person.role}</p>
                             </CardContent>
                         </Card>
-                    </ElectricBorder>
+                    </GlowingCard>
                 </ScrollReveal>
             ))}
         </div>
