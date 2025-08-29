@@ -63,7 +63,7 @@ export default function AboutPage() {
                 <ScrollReveal key={index} delay={100 * (index % 4)}>
                     <ProfileCard
                         avatarUrl={person.image}
-                        iconUrl="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756589332/icon_2_xscyak.png"
+                        iconUrl="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756678235/icon_3_ysssgq.png"
                         name={person.name}
                         title={person.role}
                         handle={person.handle}
