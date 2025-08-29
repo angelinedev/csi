@@ -66,7 +66,9 @@ export default function AboutPage() {
                         name={person.name}
                         title={person.role}
                         handle={person.handle}
-                        showUserInfo={false}
+                        status="CSI Core"
+                        contactText="View"
+                        showUserInfo={true}
                     />
                 </ScrollReveal>
             ))}
