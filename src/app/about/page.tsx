@@ -1,8 +1,8 @@
 
 'use client';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import ProfileCard from './ProfileCard';
-import './ProfileCard.css';
+import PixelCard from '@/components/shared/pixel-card';
+import Image from 'next/image';
 
 const officeBearersData = [
   { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494051/Mrs._Vanitha_Sheba_hrf9nl.png' },
@@ -58,14 +58,22 @@ export default function AboutPage() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-16 gap-y-48 justify-items-center">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 justify-items-center">
             {officeBearersData.map((person, index) => (
                 <ScrollReveal key={index} delay={100 * (index % 4)}>
-                    <ProfileCard 
-                        name={person.name}
-                        role={person.role}
-                        image={person.image}
-                    />
+                    <PixelCard variant="blue">
+                      <div className="relative z-10 flex flex-col items-center justify-center text-center p-4 text-white">
+                         <Image 
+                            src={person.image} 
+                            alt={person.name} 
+                            width={120} 
+                            height={120} 
+                            className="rounded-full border-2 border-primary-foreground/50 mb-4"
+                          />
+                          <h3 className="text-lg font-bold">{person.name}</h3>
+                          <p className="text-sm text-primary-foreground/80">{person.role}</p>
+                      </div>
+                    </PixelCard>
                 </ScrollReveal>
             ))}
         </div>
