@@ -1,29 +1,22 @@
 
 'use client';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import ChromaGrid, {
-  ChromaItem,
-} from '@/components/shared/chroma-grid';
+import ProfileCard from '@/components/shared/ProfileCard';
+import './ProfileCard.css';
 
 const officeBearersData = [
-  { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756303669/Mrs._Vanitha_Sheba_M_wfid1m.avif' },
-  { name: 'Mahendra Udayakumar', role: 'President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/Mahendra_mt6gzd.avif' },
-  { name: 'Megha Shree G', role: 'Vice President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294108/IMG_20250216_213647_995_bpqp5m.avif' },
-  { name: 'Syed Tamim Mehdi', role: 'Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294109/Tamim_fc3rns.avif' },
-  { name: 'Aliah Ridha A', role: 'Joint Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294109/Aliah_Ridha_A_lzsdjd.avif' },
-  { name: 'Deepika R', role: 'Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294107/Deepika_R_zdqzcr.avif' },
-  { name: 'Rajadurga R', role: 'Joint Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/IMG-20240816-WA0040_2_bz7yvv.avif' },
-  { name: 'Manikandan Askar K', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/askar1_fyldll.avif' },
-  { name: 'Angeline Hepzibah J', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294106/Angeline_jz23xa.avif' },
-  { name: 'Shruthi D', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294112/IMG_0620_1_c49qpz.avif' },
-  { name: 'Sharan S', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294104/SHARAN_S_dvjgti.avif' },
+  { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756303669/Mrs._Vanitha_Sheba_M_wfid1m.avif', handle: 'vanithasheba' },
+  { name: 'Mahendra Udayakumar', role: 'President', image: 'https://res"cloudinary.com/dfi26rd6m/image/upload/v1756294105/Mahendra_mt6gzd.avif', handle: 'mahendra' },
+  { name: 'Megha Shree G', role: 'Vice President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294108/IMG_20250216_213647_995_bpqp5m.avif', handle: 'meghashree' },
+  { name: 'Syed Tamim Mehdi', role: 'Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294109/Tamim_fc3rns.avif', handle: 'tamimmehdi' },
+  { name: 'Aliah Ridha A', role: 'Joint Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294109/Aliah_Ridha_A_lzsdjd.avif', handle: 'aliahridha' },
+  { name: 'Deepika R', role: 'Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294107/Deepika_R_zdqzcr.avif', handle: 'deepika' },
+  { name: 'Rajadurga R', role: 'Joint Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/IMG-20240816-WA0040_2_bz7yvv.avif', handle: 'rajadurga' },
+  { name: 'Manikandan Askar K', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/askar1_fyldll.avif', handle: 'manikandanaskar' },
+  { name: 'Angeline Hepzibah J', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294106/Angeline_jz23xa.avif', handle: 'angeline' },
+  { name: 'Shruthi D', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294112/IMG_0620_1_c49qpz.avif', handle: 'shruthi' },
+  { name: 'Sharan S', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294104/SHARAN_S_dvjgti.avif', handle: 'sharan' },
 ];
-
-const officeBearers: ChromaItem[] = officeBearersData.map((person) => ({
-    title: person.name,
-    subtitle: person.role,
-    image: person.image,
-}));
 
 export default function AboutPage() {
   return (
@@ -65,8 +58,18 @@ export default function AboutPage() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-12">
-            <ChromaGrid items={officeBearers} />
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
+            {officeBearersData.map((person, index) => (
+                <ScrollReveal key={index} delay={100 * (index % 4)}>
+                    <ProfileCard
+                        avatarUrl={person.image}
+                        name={person.name}
+                        title={person.role}
+                        handle={person.handle}
+                        showUserInfo={false}
+                    />
+                </ScrollReveal>
+            ))}
         </div>
       </section>
     </div>
