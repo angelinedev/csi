@@ -1,8 +1,9 @@
 
 'use client';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import ProfileCard from '@/components/shared/ProfileCard';
-import './ProfileCard.css';
+import ElectricBorder from '@/components/shared/electric-border';
+import Image from 'next/image';
+import { Card, CardContent } from '@/components/ui/card';
 
 const officeBearersData = [
   { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494051/Mrs._Vanitha_Sheba_hrf9nl.png', handle: 'vanithasheba' },
@@ -58,19 +59,26 @@ export default function AboutPage() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-16 gap-y-48 justify-items-center">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 justify-items-center">
             {officeBearersData.map((person, index) => (
                 <ScrollReveal key={index} delay={100 * (index % 4)}>
-                    <ProfileCard
-                        avatarUrl={person.image}
-                        iconUrl="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756678235/icon_3_ysssgq.png"
-                        name={person.name}
-                        title={person.role}
-                        handle={person.handle}
-                        status="CSI Core"
-                        contactText="View"
-                        showUserInfo={false}
-                    />
+                    <ElectricBorder className="group" style={{ borderRadius: 'var(--radius)' }}>
+                        <Card className="w-full max-w-sm overflow-hidden glassmorphic rounded-lg">
+                            <div className="relative h-64 w-full">
+                                <Image
+                                    src={person.image}
+                                    alt={`Portrait of ${person.name}`}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    className="transition-transform duration-300 group-hover:scale-110"
+                                />
+                            </div>
+                            <CardContent className="p-4 text-center">
+                                <h3 className="text-lg font-bold text-card-foreground">{person.name}</h3>
+                                <p className="text-sm text-primary">{person.role}</p>
+                            </CardContent>
+                        </Card>
+                    </ElectricBorder>
                 </ScrollReveal>
             ))}
         </div>
