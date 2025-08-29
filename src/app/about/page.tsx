@@ -5,17 +5,17 @@ import ProfileCard from '@/components/shared/ProfileCard';
 import './ProfileCard.css';
 
 const officeBearersData = [
-  { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756303669/Mrs._Vanitha_Sheba_M_wfid1m.avif', handle: 'vanithasheba' },
-  { name: 'Mahendra Udayakumar', role: 'President', image: 'https://res"cloudinary.com/dfi26rd6m/image/upload/v1756294105/Mahendra_mt6gzd.avif', handle: 'mahendra' },
-  { name: 'Megha Shree G', role: 'Vice President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294108/IMG_20250216_213647_995_bpqp5m.avif', handle: 'meghashree' },
-  { name: 'Syed Tamim Mehdi', role: 'Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294109/Tamim_fc3rns.avif', handle: 'tamimmehdi' },
-  { name: 'Aliah Ridha A', role: 'Joint Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294109/Aliah_Ridha_A_lzsdjd.avif', handle: 'aliahridha' },
-  { name: 'Deepika R', role: 'Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294107/Deepika_R_zdqzcr.avif', handle: 'deepika' },
-  { name: 'Rajadurga R', role: 'Joint Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/IMG-20240816-WA0040_2_bz7yvv.avif', handle: 'rajadurga' },
-  { name: 'Manikandan Askar K', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294105/askar1_fyldll.avif', handle: 'manikandanaskar' },
-  { name: 'Angeline Hepzibah J', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294106/Angeline_jz23xa.avif', handle: 'angeline' },
-  { name: 'Shruthi D', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294112/IMG_0620_1_c49qpz.avif', handle: 'shruthi' },
-  { name: 'Sharan S', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756294104/SHARAN_S_dvjgti.avif', handle: 'sharan' },
+  { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494051/Mrs._Vanitha_Sheba_hrf9nl.png', handle: 'vanithasheba' },
+  { name: 'Mahendra Udayakumar', role: 'President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494049/Mahendra_mv2qlt.png', handle: 'mahendra' },
+  { name: 'Megha Shree G', role: 'Vice President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494043/Megha_t7rdpy.png', handle: 'meghashree' },
+  { name: 'Syed Tamim Mehdi', role: 'Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494043/Tamim_ojlrs9.png', handle: 'tamimmehdi' },
+  { name: 'Aliah Ridha A', role: 'Joint Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494045/Aliah_wqyhsk.png', handle: 'aliahridha' },
+  { name: 'Deepika R', role: 'Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494043/Deepika_uimnr7.png', handle: 'deepika' },
+  { name: 'Rajadurga R', role: 'Joint Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494042/Rajadurga_gqhqv5.png', handle: 'rajadurga' },
+  { name: 'Manikandan Askar K', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494042/Askar_xcrymh.png', handle: 'manikandanaskar' },
+  { name: 'Angeline Hepzibah J', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494051/Angeline_d8uaow.png', handle: 'angeline' },
+  { name: 'Shruthi D', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494048/Shruthi_s3hia1.png', handle: 'shruthi' },
+  { name: 'Sharan S', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494045/Sharan_upq8rx.png', handle: 'sharan' },
 ];
 
 export default function AboutPage() {
@@ -58,7 +58,7 @@ export default function AboutPage() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 justify-items-center">
             {officeBearersData.map((person, index) => (
                 <ScrollReveal key={index} delay={100 * (index % 4)}>
                     <ProfileCard
