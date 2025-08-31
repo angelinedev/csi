@@ -16,12 +16,27 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import {
-  sendContactMessage,
-  ContactMessageSchema,
-} from '@/ai/flows/contact-flow';
+import { sendContactMessage } from '@/ai/flows/contact-flow';
 import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
+
+const ContactMessageSchema = z.object({
+  name: z.string().min(2, {
+    message: 'Name must be at least 2 characters.',
+  }),
+  email: z.string().email({
+    message: 'Please enter a valid email address.',
+  }),
+  department: z.string().min(2, {
+    message: 'Department is required.',
+  }),
+  year: z.string().min(1, {
+    message: 'Year is required.',
+  }),
+  message: z.string().min(10, {
+    message: 'Message must be at least 10 characters.',
+  }),
+});
 
 export function ContactForm() {
   const { toast } = useToast();
