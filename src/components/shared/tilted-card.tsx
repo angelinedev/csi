@@ -1,59 +1,84 @@
 
 'use client';
-import { useRef } from 'react';
-import {
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-  useSpring,
-} from 'framer-motion';
+import { useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, type SpringOptions } from "framer-motion";
 
-const TiltedCard = ({ children }: { children: React.ReactNode }) => {
+interface TiltedCardProps {
+  children?: React.ReactNode;
+  rotateAmplitude?: number;
+}
+
+const springValues: SpringOptions = {
+  damping: 30,
+  stiffness: 100,
+  mass: 2,
+};
+
+export default function TiltedCard({
+  children,
+  rotateAmplitude = 14,
+}: TiltedCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useSpring(useMotionValue(0), springValues);
+  const rotateY = useSpring(useMotionValue(0), springValues);
+  const scale = useSpring(1, springValues);
 
-  const mouseX = useSpring(0, { stiffness: 400, damping: 50 });
-  const mouseY = useSpring(0, { stiffness: 400, damping: 50 });
+  function handleMouse(e: React.MouseEvent<HTMLDivElement>) {
+    if (!ref.current) return;
 
-  function onMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+    const rect = ref.current.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left - rect.width / 2;
+    const offsetY = e.clientY - rect.top - rect.height / 2;
+
+    const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
+    const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
+
+    rotateX.set(rotationX);
+    rotateY.set(rotationY);
+
+    x.set(e.clientX - rect.left);
+    y.set(e.clientY - rect.top);
   }
 
-  const maskImage = useMotionTemplate`
-    radial-gradient(
-      240px at ${mouseX}px ${mouseY}px,
-      white,
-      transparent
-    )
-  `;
+  function handleMouseEnter() {
+    scale.set(1.1);
+  }
 
-  const style = {
-    maskImage,
-    WebkitMaskImage: maskImage,
-  };
+  function handleMouseLeave() {
+    scale.set(1);
+    rotateX.set(0);
+    rotateY.set(0);
+  }
 
   return (
     <div
-      onMouseMove={onMouseMove}
-      className="group relative w-[300px] h-[400px] rounded-2xl border border-white/10 bg-card p-4 text-card-foreground duration-500 hover:border-white/30"
+      ref={ref}
+      className="relative w-full h-full [perspective:800px] flex flex-col items-center justify-center"
+      style={{
+        height: '400px',
+        width: '300px',
+      }}
+      onMouseMove={handleMouse}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className="absolute inset-1 rounded-xl bg-card-foreground/5" />
       <motion.div
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary to-accent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        style={style}
-      />
-      <motion.div
-        className="absolute inset-0 rounded-2xl opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-100"
-        style={style}
+        className="relative [transform-style:preserve-3d] w-full h-full"
+        style={{
+          rotateX,
+          rotateY,
+          scale,
+        }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(at_center,transparent,black)]" />
+        <div className="absolute inset-0 rounded-2xl border border-white/10 bg-card p-4 text-card-foreground">
+             <div className="absolute inset-1 rounded-xl bg-card-foreground/5" />
+             <div className="relative h-full w-full flex items-center justify-center">
+                {children}
+             </div>
+        </div>
       </motion.div>
-      <div className="relative h-full w-full flex items-center justify-center">
-        {children}
-      </div>
     </div>
   );
-};
-
-export default TiltedCard;
+}
