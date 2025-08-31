@@ -1,10 +1,13 @@
 
 'use client';
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useMotionValue, useSpring, type SpringOptions } from "framer-motion";
+import Image from 'next/image';
 
 interface TiltedCardProps {
-  children?: React.ReactNode;
+  imageSrc: string;
+  altText: string;
+  overlayContent?: React.ReactNode;
   rotateAmplitude?: number;
 }
 
@@ -15,7 +18,9 @@ const springValues: SpringOptions = {
 };
 
 export default function TiltedCard({
-  children,
+  imageSrc,
+  altText,
+  overlayContent,
   rotateAmplitude = 14,
 }: TiltedCardProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -55,7 +60,7 @@ export default function TiltedCard({
   return (
     <div
       ref={ref}
-      className="relative w-full h-full [perspective:800px] flex flex-col items-center justify-center"
+      className="relative [perspective:800px] flex flex-col items-center justify-center"
       style={{
         height: '400px',
         width: '300px',
@@ -72,11 +77,14 @@ export default function TiltedCard({
           scale,
         }}
       >
-        <div className="absolute inset-0 rounded-2xl border border-white/10 bg-card p-4 text-card-foreground">
-             <div className="absolute inset-1 rounded-xl bg-card-foreground/5" />
-             <div className="relative h-full w-full flex items-center justify-center">
-                {children}
-             </div>
+        <div className="absolute inset-0 rounded-2xl bg-card overflow-hidden">
+             <Image 
+                src={imageSrc}
+                alt={altText}
+                fill
+                className="object-cover"
+              />
+             {overlayContent}
         </div>
       </motion.div>
     </div>
