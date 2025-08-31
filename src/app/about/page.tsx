@@ -1,21 +1,21 @@
 
 'use client';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import PixelCard from '@/components/shared/pixel-card';
+import TiltedCard from '@/components/shared/tilted-card';
 import Image from 'next/image';
 
 const officeBearersData = [
-  { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494051/Mrs._Vanitha_Sheba_hrf9nl.png' },
-  { name: 'Mahendra Udayakumar', role: 'President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494049/Mahendra_mv2qlt.png' },
-  { name: 'Megha Shree G', role: 'Vice President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494043/Megha_t7rdpy.png' },
-  { name: 'Syed Tamim Mehdi', role: 'Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494043/Tamim_ojlrs9.png' },
-  { name: 'Aliah Ridha A', role: 'Joint Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494045/Aliah_wqyhsk.png' },
-  { name: 'Deepika R', role: 'Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494043/Deepika_uimnr7.png' },
-  { name: 'Rajadurga R', role: 'Joint Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494042/Rajadurga_gqhqv5.png' },
-  { name: 'Manikandan Askar K', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494042/Askar_xcrymh.png' },
-  { name: 'Angeline Hepzibah J', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494051/Angeline_d8uaow.png' },
-  { name: 'Shruthi D', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494048/Shruthi_s3hia1.png' },
-  { name: 'Sharan S', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494045/Sharan_upq8rx.png' },
+  { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494084/Mrs._Vanitha_Sheba_M_dueits.avif' },
+  { name: 'Mahendra Udayakumar', role: 'President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756664807/Mahendra_m8tczw.avif' },
+  { name: 'Megha Shree G', role: 'Vice President', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494082/IMG_20250216_213647_995_h8v617.avif' },
+  { name: 'Syed Tamim Mehdi', role: 'Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494081/Tamim_nqqpve.avif' },
+  { name: 'Aliah Ridha A', role: 'Joint Secretary', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494082/Aliah_Ridha_A_svd1fl.avif' },
+  { name: 'Deepika R', role: 'Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494082/Deepika_R_wsorco.avif' },
+  { name: 'Rajadurga R', role: 'Joint Treasurer', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494083/IMG-20240816-WA0040_2_hp8ftj.avif' },
+  { name: 'Manikandan Askar K', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494081/askar1_jqucud.avif' },
+  { name: 'Angeline Hepzibah J', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494081/Angeline_lnff2t.avif' },
+  { name: 'Shruthi D', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494083/IMG_0620_1_ki4wjb.avif' },
+  { name: 'Sharan S', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494082/SHARAN_S_zr1onr.avif' },
 ];
 
 export default function AboutPage() {
@@ -58,22 +58,22 @@ export default function AboutPage() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 justify-items-center">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 justify-items-center">
             {officeBearersData.map((person, index) => (
                 <ScrollReveal key={index} delay={100 * (index % 4)}>
-                    <PixelCard variant="blue">
-                      <div className="relative z-10 flex flex-col items-center justify-center text-center p-4 text-white">
+                    <TiltedCard>
+                      <div className="p-6 text-center">
                          <Image 
                             src={person.image} 
                             alt={person.name} 
                             width={120} 
                             height={120} 
-                            className="rounded-full border-2 border-primary-foreground/50 mb-4"
+                            className="rounded-full border-2 border-primary/50 mb-4 mx-auto object-cover w-32 h-32"
                           />
-                          <h3 className="text-lg font-bold">{person.name}</h3>
-                          <p className="text-sm text-primary-foreground/80">{person.role}</p>
+                          <h3 className="text-lg font-bold text-card-foreground">{person.name}</h3>
+                          <p className="text-sm text-muted-foreground">{person.role}</p>
                       </div>
-                    </PixelCard>
+                    </TiltedCard>
                 </ScrollReveal>
             ))}
         </div>
