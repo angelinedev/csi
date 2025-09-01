@@ -4,7 +4,15 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RollingGallery from '@/components/shared/rolling-gallery';
 import Image from 'next/image';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+import Autoplay from "embla-carousel-autoplay";
 
 const pastEvents = [
   {
@@ -48,6 +56,19 @@ const pastEvents = [
     hint: 'network workshop',
   },
 ];
+
+const inaugurationImages = [
+    {
+        src: "https://res.cloudinary.com/dfi26rd6m/image/upload/v1756754394/Inauguration_2025_-_2_js78ko.avif",
+        alt: "Inauguration of CSI-JCE - Team",
+        hint: "team inauguration",
+    },
+    {
+        src: "https://res.cloudinary.com/dfi26rd6m/image/upload/v1756752567/Inauguration_2025_jfvaly.avif",
+        alt: "Inauguration of CSI-JCE - Dignitaries",
+        hint: "dignitaries inauguration",
+    }
+]
 
 export default function Home() {
   return (
@@ -96,23 +117,39 @@ export default function Home() {
                          <div
                             className="absolute -z-10 inset-0 rounded-lg bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_200%] animate-[border-flow_5s_ease_infinite]"
                          />
-                         <div className="p-1 rounded-lg bg-background grid grid-cols-2 gap-1">
-                            <Image
-                                src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756754394/Inauguration_2025_-_2_js78ko.avif"
-                                alt="Inauguration of CSI-JCE - Team"
-                                width={600}
-                                height={675}
-                                data-ai-hint="team inauguration"
-                                className="w-full h-full object-cover rounded-l-md"
-                            />
-                             <Image
-                                src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756752567/Inauguration_2025_jfvaly.avif"
-                                alt="Inauguration of CSI-JCE - Dignitaries"
-                                width={600}
-                                height={675}
-                                data-ai-hint="dignitaries inauguration"
-                                className="w-full h-full object-cover rounded-r-md"
-                            />
+                         <div className="p-1 rounded-lg bg-background">
+                           <Carousel 
+                             className="w-full"
+                             plugins={[
+                                Autoplay({
+                                  delay: 3000,
+                                  stopOnInteraction: true,
+                                })
+                             ]}
+                           >
+                              <CarouselContent>
+                                {inaugurationImages.map((image, index) => (
+                                  <CarouselItem key={index}>
+                                    <div className="p-1">
+                                      <Card className="overflow-hidden">
+                                        <CardContent className="flex aspect-[4/3] items-center justify-center p-0">
+                                            <Image
+                                                src={image.src}
+                                                alt={image.alt}
+                                                width={1200}
+                                                height={900}
+                                                data-ai-hint={image.hint}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </CardContent>
+                                      </Card>
+                                    </div>
+                                  </CarouselItem>
+                                ))}
+                              </CarouselContent>
+                              <CarouselPrevious className="left-4" />
+                              <CarouselNext className="right-4" />
+                            </Carousel>
                         </div>
                     </div>
                     <div className="mt-8 text-center">
