@@ -95,7 +95,7 @@ export default function Home() {
                      <div className="p-1 relative rounded-lg bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:scale-105">
                          <div className="p-1 rounded-lg bg-background">
                             <Image
-                                src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756752567/Inauguration_2025_jfvaly.avif"
+                                src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756754394/Inauguration_2025_-_2_js78ko.avif"
                                 alt="Inauguration of CSI-JCE"
                                 width={1200}
                                 height={675}
