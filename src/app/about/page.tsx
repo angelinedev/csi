@@ -1,8 +1,8 @@
 
 'use client';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import TiltedCard from '@/components/shared/tilted-card';
 import Image from 'next/image';
+import PixelCard from '@/components/shared/pixel-card';
 
 const officeBearersData = [
   { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494084/Mrs._Vanitha_Sheba_M_dueits.avif' },
@@ -16,6 +16,13 @@ const officeBearersData = [
   { name: 'Angeline Hepzibah J', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494081/Angeline_lnff2t.avif' },
   { name: 'Shruthi D', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494083/IMG_0620_1_ki4wjb.avif' },
   { name: 'Sharan S', role: 'Executive Member', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494082/SHARAN_S_zr1onr.avif' },
+];
+
+const chiefPatronsData = [
+    { name: 'Dr.K.Palanikumar', role: 'Chairman' },
+    { name: 'Dr.J.Dafni Rose', role: 'Vice-Chairman' },
+    { name: 'Dr.B.Sreedevi', role: 'Hon.Secretary' },
+    { name: 'Dr.D.Weslin', role: 'Hon.Treasurer' },
 ];
 
 export default function AboutPage() {
@@ -61,19 +68,42 @@ export default function AboutPage() {
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 justify-items-center">
           {officeBearersData.map((person, index) => (
             <ScrollReveal key={index} delay={100 * (index % 4)}>
-               <div className="relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-                 <TiltedCard
-                  imageSrc={person.image}
-                  altText={person.name}
-                  overlayContent={
-                    <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent rounded-2xl">
+                <div className="relative group w-[300px] h-[400px] rounded-2xl overflow-hidden shadow-lg">
+                   <Image 
+                      src={person.image}
+                      alt={person.name}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent">
                       <h3 className="text-lg font-bold text-white">{person.name}</h3>
                       <p className="text-sm text-white/80">{person.role}</p>
                     </div>
-                  }
-                />
-              </div>
+                </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16 md:mt-24">
+        <ScrollReveal>
+          <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
+            Chief Patrons of CSI Kancheepuram Chapter
+          </h2>
+           <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
+            The guiding force behind the CSI Kancheepuram Chapter.
+          </p>
+        </ScrollReveal>
+        
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
+           {chiefPatronsData.map((person, index) => (
+            <ScrollReveal key={index} delay={100 * (index % 4)}>
+              <PixelCard>
+                <div className="text-center p-4">
+                  <h3 className="text-xl font-bold text-card-foreground">{person.name}</h3>
+                  <p className="text-muted-foreground mt-1">{person.role}</p>
+                </div>
+              </PixelCard>
             </ScrollReveal>
           ))}
         </div>
