@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RollingGallery from '@/components/shared/rolling-gallery';
 import Image from 'next/image';
-import ElectricBorder from '@/components/shared/electric-border';
+import { Card } from '@/components/ui/card';
 
 const pastEvents = [
   {
@@ -92,21 +92,16 @@ export default function Home() {
             </ScrollReveal>
             <ScrollReveal delay={200}>
                 <div className="mt-12 max-w-5xl mx-auto">
-                    <ElectricBorder
-                        className="group"
-                        style={{ borderRadius: 'var(--radius)' }}
-                    >
-                        <div className="overflow-hidden rounded-lg">
+                    <Card className="group overflow-hidden rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20">
                         <Image
                             src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756752567/Inauguration_2025_jfvaly.avif"
                             alt="Inauguration of CSI-JCE"
                             width={1200}
                             height={675}
                             data-ai-hint="team inauguration"
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        </div>
-                    </ElectricBorder>
+                    </Card>
                     <div className="mt-8 text-center">
                         <Button asChild size="lg">
                             <Link href="/about">Meet the Team</Link>
