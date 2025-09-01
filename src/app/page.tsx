@@ -1,4 +1,5 @@
 
+'use client';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
