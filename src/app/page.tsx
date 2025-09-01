@@ -133,14 +133,14 @@ export default function Home() {
                                   <CarouselItem key={index}>
                                     <div className="p-1">
                                       <Card className="overflow-hidden">
-                                        <CardContent className="flex aspect-[4/3] items-center justify-center p-0">
+                                        <CardContent className="flex items-center justify-center p-0">
                                             <Image
                                                 src={image.src}
                                                 alt={image.alt}
                                                 width={1200}
                                                 height={900}
                                                 data-ai-hint={image.hint}
-                                                className="w-full h-full object-contain"
+                                                className="object-contain"
                                             />
                                         </CardContent>
                                       </Card>
