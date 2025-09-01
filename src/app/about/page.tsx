@@ -106,9 +106,10 @@ export default function AboutPage() {
                       containerWidth="300px"
                       imageHeight="400px"
                       imageWidth="300px"
+                      showTooltip={false}
                       displayOverlayContent={true}
                       overlayContent={
-                          <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent">
+                          <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/40 backdrop-blur-sm rounded-b-[15px]">
                               <h3 className="text-xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">{person.name}</h3>
                               <p className="text-md text-white/80 [text-shadow:0_1px_2px_rgba(0,0,0,0.4)]">{person.role}</p>
                           </div>
