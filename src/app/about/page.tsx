@@ -101,9 +101,6 @@ export default function AboutPage() {
                     <TiltedCard
                       imageSrc={person.image}
                       altText={person.name}
-                      captionText={person.name}
-                      containerHeight="400px"
-                      containerWidth="300px"
                       imageHeight="400px"
                       imageWidth="300px"
                       showTooltip={false}

@@ -8,8 +8,6 @@ interface TiltedCardProps {
   imageSrc: React.ComponentProps<'img'>['src'];
   altText?: string;
   captionText?: string;
-  containerHeight?: React.CSSProperties['height'];
-  containerWidth?: React.CSSProperties['width'];
   imageHeight?: React.CSSProperties['height'];
   imageWidth?: React.CSSProperties['width'];
   scaleOnHover?: number;
@@ -30,8 +28,6 @@ export default function TiltedCard({
   imageSrc,
   altText = 'Tilted card image',
   captionText = '',
-  containerHeight = '300px',
-  containerWidth = '100%',
   imageHeight = '300px',
   imageWidth = '300px',
   scaleOnHover = 1.1,
@@ -95,8 +91,8 @@ export default function TiltedCard({
       ref={ref}
       className="relative w-full h-full [perspective:800px] flex flex-col items-center justify-center"
       style={{
-        height: containerHeight,
-        width: containerWidth
+        height: imageHeight,
+        width: imageWidth
       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
@@ -121,7 +117,7 @@ export default function TiltedCard({
         <motion.img
           src={imageSrc}
           alt={altText}
-          className="absolute top-0 left-0 object-contain rounded-[15px] will-change-transform [transform:translateZ(0)]"
+          className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
           style={{
             width: imageWidth,
             height: imageHeight
