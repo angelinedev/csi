@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
 import { useEffect, useRef } from 'react';
+import { Footer } from '@/components/layout/footer';
 
 
 export default function RootLayout({
@@ -43,7 +44,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-body">
+      <body className="font-body flex flex-col min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -53,7 +54,8 @@ export default function RootLayout({
           <div ref={spotlightRef} className="fixed inset-0 -z-10 h-full w-full bg-background animated-gradient">
           </div>
           <Header />
-          <main className="overflow-x-hidden">{children}</main>
+          <main className="overflow-x-hidden flex-grow">{children}</main>
+          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>
