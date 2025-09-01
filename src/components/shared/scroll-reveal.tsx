@@ -7,9 +7,10 @@ interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  initialX?: number;
 }
 
-export const ScrollReveal = ({ children, className, delay = 0 }: ScrollRevealProps) => {
+export const ScrollReveal = ({ children, className, delay = 0, initialX = 0 }: ScrollRevealProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -36,15 +37,29 @@ export const ScrollReveal = ({ children, className, delay = 0 }: ScrollRevealPro
     };
   }, []);
 
+  const getInitialTransform = () => {
+    if (initialX !== 0) {
+      return `translate3d(${initialX}px, 5px, 0)`;
+    }
+    return 'translate3d(0, 5px, 0)';
+  };
+  
+  const getVisibleTransform = () => {
+     return 'translate3d(0, 0, 0)';
+  }
+
   return (
     <div
       ref={ref}
       className={cn(
         'transition-all duration-700 ease-out',
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5',
+        isVisible ? 'opacity-100' : 'opacity-0',
         className
       )}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ 
+        transitionDelay: `${delay}ms`,
+        transform: isVisible ? getVisibleTransform() : getInitialTransform(),
+      }}
     >
       {children}
     </div>

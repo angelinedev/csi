@@ -5,15 +5,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RollingGallery from '@/components/shared/rolling-gallery';
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import Autoplay from "embla-carousel-autoplay";
 
 const pastEvents = [
   {
@@ -112,54 +103,39 @@ export default function Home() {
                 The official launch of the CSI-JCE chapter and introduction of our dedicated office bearers.
                 </p>
             </ScrollReveal>
-            <ScrollReveal delay={200}>
-                <div className="mt-12 max-w-5xl mx-auto group">
-                     <div className="p-1 relative rounded-lg bg-background transition-all duration-500 group-hover:scale-105">
-                         <div
-                            className="absolute -z-10 inset-0 rounded-lg bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_200%] animate-[border-flow_5s_ease_infinite]"
-                         />
-                         <div className="p-1 rounded-lg bg-background">
-                           <Carousel 
-                             className="w-full"
-                             plugins={[
-                                Autoplay({
-                                  delay: 3000,
-                                  stopOnInteraction: true,
-                                })
-                             ]}
-                           >
-                              <CarouselContent>
-                                {inaugurationImages.map((image, index) => (
-                                  <CarouselItem key={index}>
-                                    <div className="p-1">
-                                      <Card className="overflow-hidden">
-                                        <CardContent className="flex items-center justify-center p-0">
-                                            <Image
-                                                src={image.src}
-                                                alt={image.alt}
-                                                width={1200}
-                                                height={900}
-                                                data-ai-hint={image.hint}
-                                                className="object-contain"
-                                            />
-                                        </CardContent>
-                                      </Card>
-                                    </div>
-                                  </CarouselItem>
-                                ))}
-                              </CarouselContent>
-                              <CarouselPrevious className="left-4" />
-                              <CarouselNext className="right-4" />
-                            </Carousel>
-                        </div>
-                    </div>
-                    <div className="mt-8 text-center">
-                        <Button asChild size="lg">
-                            <Link href="/about">Meet the Team</Link>
-                        </Button>
-                    </div>
-                </div>
-            </ScrollReveal>
+
+            <div className="mt-12 max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  {inaugurationImages.map((image, index) => (
+                      <ScrollReveal 
+                        key={image.src} 
+                        className="group"
+                        initialX={index === 0 ? -100 : 100}
+                      >
+                          <div className="p-1 relative rounded-lg bg-background transition-all duration-500 group-hover:scale-105">
+                               <div
+                                  className="absolute -z-10 inset-0 rounded-lg bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_200%] animate-[border-flow_5s_ease_infinite]"
+                               />
+                              <div className="p-1 rounded-lg bg-background">
+                                  <Image
+                                      src={image.src}
+                                      alt={image.alt}
+                                      width={1200}
+                                      height={900}
+                                      data-ai-hint={image.hint}
+                                      className="object-contain rounded-md"
+                                  />
+                              </div>
+                          </div>
+                      </ScrollReveal>
+                  ))}
+              </div>
+              <div className="mt-12 text-center">
+                  <Button asChild size="lg">
+                      <Link href="/about">Meet the Team</Link>
+                  </Button>
+              </div>
+            </div>
         </div>
       </section>
 
