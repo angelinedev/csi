@@ -93,14 +93,22 @@ export default function Home() {
             <ScrollReveal delay={200}>
                 <div className="mt-12 max-w-5xl mx-auto group">
                      <div className="p-1 relative rounded-lg bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:scale-105">
-                         <div className="p-1 rounded-lg bg-background">
+                         <div className="p-1 rounded-lg bg-background grid grid-cols-2 gap-1">
                             <Image
                                 src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756754394/Inauguration_2025_-_2_js78ko.avif"
-                                alt="Inauguration of CSI-JCE"
-                                width={1200}
+                                alt="Inauguration of CSI-JCE - Team"
+                                width={600}
                                 height={675}
                                 data-ai-hint="team inauguration"
-                                className="w-full h-full object-cover rounded-md"
+                                className="w-full h-full object-cover rounded-l-md"
+                            />
+                             <Image
+                                src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756752567/Inauguration_2025_jfvaly.avif"
+                                alt="Inauguration of CSI-JCE - Dignitaries"
+                                width={600}
+                                height={675}
+                                data-ai-hint="dignitaries inauguration"
+                                className="w-full h-full object-cover rounded-r-md"
                             />
                         </div>
                     </div>
