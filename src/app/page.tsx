@@ -91,17 +91,19 @@ export default function Home() {
                 </p>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-                <div className="mt-12 max-w-5xl mx-auto">
-                    <Card className="group overflow-hidden rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20">
-                        <Image
-                            src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756752567/Inauguration_2025_jfvaly.avif"
-                            alt="Inauguration of CSI-JCE"
-                            width={1200}
-                            height={675}
-                            data-ai-hint="team inauguration"
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                    </Card>
+                <div className="mt-12 max-w-5xl mx-auto group">
+                     <div className="p-1 relative rounded-lg bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:scale-105">
+                         <div className="p-1 rounded-lg bg-background">
+                            <Image
+                                src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756752567/Inauguration_2025_jfvaly.avif"
+                                alt="Inauguration of CSI-JCE"
+                                width={1200}
+                                height={675}
+                                data-ai-hint="team inauguration"
+                                className="w-full h-full object-cover rounded-md"
+                            />
+                        </div>
+                    </div>
                     <div className="mt-8 text-center">
                         <Button asChild size="lg">
                             <Link href="/about">Meet the Team</Link>
