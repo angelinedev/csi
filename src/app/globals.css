@@ -83,4 +83,16 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
+
+  @keyframes button-glow {
+    0% {
+      box-shadow: 0 0 5px hsl(var(--primary)/0.2), 0 0 10px hsl(var(--primary)/0.2);
+    }
+    50% {
+      box-shadow: 0 0 10px hsl(var(--primary)/0.5), 0 0 20px hsl(var(--primary)/0.5);
+    }
+    100% {
+      box-shadow: 0 0 5px hsl(var(--primary)/0.2), 0 0 10px hsl(var(--primary)/0.2);
+    }
+  }
 }
