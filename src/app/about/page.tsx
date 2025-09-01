@@ -61,16 +61,19 @@ export default function AboutPage() {
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 justify-items-center">
           {officeBearersData.map((person, index) => (
             <ScrollReveal key={index} delay={100 * (index % 4)}>
-              <TiltedCard
-                imageSrc={person.image}
-                altText={person.name}
-                overlayContent={
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent rounded-2xl">
-                    <h3 className="text-lg font-bold text-white">{person.name}</h3>
-                    <p className="text-sm text-white/80">{person.role}</p>
-                  </div>
-                }
-              />
+               <div className="relative group">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                 <TiltedCard
+                  imageSrc={person.image}
+                  altText={person.name}
+                  overlayContent={
+                    <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent rounded-2xl">
+                      <h3 className="text-lg font-bold text-white">{person.name}</h3>
+                      <p className="text-sm text-white/80">{person.role}</p>
+                    </div>
+                  }
+                />
+              </div>
             </ScrollReveal>
           ))}
         </div>
