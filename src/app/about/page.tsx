@@ -99,15 +99,21 @@ export default function AboutPage() {
                 <div className="relative group">
                     <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur-md opacity-60 group-hover:opacity-80 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                     <TiltedCard
-                        imageSrc={person.image}
-                        altText={person.name}
-                        overlayContent={
-                            <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent">
-                                <h3 className="text-xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">{person.name}</h3>
-                                <p className="text-md text-white/80 [text-shadow:0_1px_2px_rgba(0,0,0,0.4)]">{person.role}</p>
-                            </div>
-                        }
-                    />
+                      imageSrc={person.image}
+                      altText={person.name}
+                      captionText={person.name}
+                      containerHeight="400px"
+                      containerWidth="300px"
+                      imageHeight="400px"
+                      imageWidth="300px"
+                      displayOverlayContent={true}
+                      overlayContent={
+                          <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent">
+                              <h3 className="text-xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">{person.name}</h3>
+                              <p className="text-md text-white/80 [text-shadow:0_1px_2px_rgba(0,0,0,0.4)]">{person.role}</p>
+                          </div>
+                      }
+                  />
                 </div>
             </ScrollReveal>
           ))}
