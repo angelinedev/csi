@@ -98,7 +98,7 @@ export default function Home() {
                     >
                         <div className="overflow-hidden rounded-lg">
                         <Image
-                            src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756664808/inauguration_nsv2eg.avif"
+                            src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756752567/Inauguration_2025_jfvaly.avif"
                             alt="Inauguration of CSI-JCE"
                             width={1200}
                             height={675}
