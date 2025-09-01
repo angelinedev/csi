@@ -69,12 +69,15 @@ export default function AboutPage() {
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
            {chiefPatronsData.map((person, index) => (
             <ScrollReveal key={index} delay={100 * (index % 4)}>
-              <PixelCard>
-                <div className="text-center p-4">
-                  <h3 className="text-xl font-bold text-card-foreground">{person.name}</h3>
-                  <p className="text-muted-foreground mt-1">{person.role}</p>
-                </div>
-              </PixelCard>
+              <div className="relative group">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                <PixelCard>
+                  <div className="text-center p-4">
+                    <h3 className="text-xl font-bold text-card-foreground">{person.name}</h3>
+                    <p className="text-muted-foreground mt-1">{person.role}</p>
+                  </div>
+                </PixelCard>
+              </div>
             </ScrollReveal>
           ))}
         </div>
@@ -93,16 +96,19 @@ export default function AboutPage() {
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 justify-items-center">
           {officeBearersData.map((person, index) => (
             <ScrollReveal key={index} delay={100 * (index % 4)}>
-                <TiltedCard
-                    imageSrc={person.image}
-                    altText={person.name}
-                    overlayContent={
-                        <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent">
-                            <h3 className="text-xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">{person.name}</h3>
-                            <p className="text-md text-white/80 [text-shadow:0_1px_2px_rgba(0,0,0,0.4)]">{person.role}</p>
-                        </div>
-                    }
-                />
+                <div className="relative group">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur-md opacity-60 group-hover:opacity-80 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                    <TiltedCard
+                        imageSrc={person.image}
+                        altText={person.name}
+                        overlayContent={
+                            <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent">
+                                <h3 className="text-xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">{person.name}</h3>
+                                <p className="text-md text-white/80 [text-shadow:0_1px_2px_rgba(0,0,0,0.4)]">{person.role}</p>
+                            </div>
+                        }
+                    />
+                </div>
             </ScrollReveal>
           ))}
         </div>
