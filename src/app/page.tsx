@@ -92,7 +92,10 @@ export default function Home() {
             </ScrollReveal>
             <ScrollReveal delay={200}>
                 <div className="mt-12 max-w-5xl mx-auto group">
-                     <div className="p-1 relative rounded-lg bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:scale-105">
+                     <div className="p-1 relative rounded-lg bg-background transition-all duration-500 group-hover:scale-105">
+                         <div
+                            className="absolute -z-10 inset-0 rounded-lg bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_200%] animate-[border-flow_5s_ease_infinite]"
+                         />
                          <div className="p-1 rounded-lg bg-background grid grid-cols-2 gap-1">
                             <Image
                                 src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756754394/Inauguration_2025_-_2_js78ko.avif"
