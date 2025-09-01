@@ -48,7 +48,7 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
 
   const cylinderWidth: number = isScreenSizeSm ? 1100 : 1800;
   const faceCount: number = galleryItems.length;
-  const faceWidth: number = (cylinderWidth / faceCount) * 1.5;
+  const faceWidth: number = (cylinderWidth / faceCount) * 1.8;
   const radius: number = cylinderWidth / (2 * Math.PI);
 
   const dragFactor: number = 0.05;
@@ -155,13 +155,13 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
           {galleryItems.map((item, i) => (
             <div
               key={i}
-              className="group absolute flex h-fit items-center justify-center p-[8%] [backface-visibility:hidden] md:p-[6%]"
+              className="group absolute flex h-fit items-center justify-center p-2 [backface-visibility:hidden]"
               style={{
                 width: `${faceWidth}px`,
                 transform: `rotateY(${(360 / faceCount) * i}deg) translateZ(${radius}px)`,
               }}
             >
-              <figure className="pointer-events-none w-[320px] rounded-lg border-2 border-primary/50 object-cover transition-transform duration-300 ease-out group-hover:scale-105 overflow-hidden">
+              <figure className="pointer-events-none w-[400px] rounded-lg border-2 border-primary/50 object-cover transition-transform duration-300 ease-out group-hover:scale-105 overflow-hidden">
                 <figcaption className="p-3 text-center text-sm font-medium text-foreground bg-background/80 backdrop-blur-sm">
                   {item.title}
                 </figcaption>
@@ -169,7 +169,7 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
                   src={item.img}
                   alt={item.title}
                   data-ai-hint={item.hint}
-                  className="h-[180px] w-full object-cover"
+                  className="h-[225px] w-full object-cover"
                 />
               </figure>
             </div>
