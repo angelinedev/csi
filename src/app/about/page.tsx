@@ -109,8 +109,8 @@ export default function AboutPage() {
                       showTooltip={false}
                       displayOverlayContent={true}
                       overlayContent={
-                          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-auto whitespace-nowrap">
-                            <div className="p-3 bg-black/50 backdrop-blur-md rounded-lg text-center">
+                          <div className="absolute bottom-4 left-4 w-auto whitespace-nowrap">
+                            <div className="p-3 bg-black/50 backdrop-blur-md rounded-lg text-left">
                                 <h3 className="text-lg font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">{person.name}</h3>
                                 <p className="text-sm text-white/80 [text-shadow:0_1px_2px_rgba(0,0,0,0.4)]">{person.role}</p>
                             </div>
