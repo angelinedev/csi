@@ -46,9 +46,9 @@ const RollingGallery: React.FC<RollingGalleryProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const cylinderWidth: number = isScreenSizeSm ? 1100 : 1800;
+  const cylinderWidth: number = isScreenSizeSm ? 1400 : 2500;
   const faceCount: number = galleryItems.length;
-  const faceWidth: number = (cylinderWidth / faceCount) * 1.8;
+  const faceWidth: number = cylinderWidth / faceCount;
   const radius: number = cylinderWidth / (2 * Math.PI);
 
   const dragFactor: number = 0.05;
