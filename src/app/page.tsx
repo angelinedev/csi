@@ -3,6 +3,8 @@ import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RollingGallery from '@/components/shared/rolling-gallery';
+import Image from 'next/image';
+import ElectricBorder from '@/components/shared/electric-border';
 
 const pastEvents = [
   {
@@ -75,6 +77,43 @@ export default function Home() {
               </Button>
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+            <ScrollReveal>
+                <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
+                Our Inauguration
+                </h2>
+                <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
+                The official launch of the CSI-JCE chapter and introduction of our dedicated office bearers.
+                </p>
+            </ScrollReveal>
+            <ScrollReveal delay={200}>
+                <div className="mt-12 max-w-5xl mx-auto">
+                    <ElectricBorder
+                        className="group"
+                        style={{ borderRadius: 'var(--radius)' }}
+                    >
+                        <div className="overflow-hidden rounded-lg">
+                        <Image
+                            src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756664808/inauguration_nsv2eg.avif"
+                            alt="Inauguration of CSI-JCE"
+                            width={1200}
+                            height={675}
+                            data-ai-hint="team inauguration"
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                        </div>
+                    </ElectricBorder>
+                    <div className="mt-8 text-center">
+                        <Button asChild size="lg">
+                            <Link href="/about">Meet the Team</Link>
+                        </Button>
+                    </div>
+                </div>
+            </ScrollReveal>
         </div>
       </section>
 
