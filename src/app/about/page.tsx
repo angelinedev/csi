@@ -58,6 +58,30 @@ export default function AboutPage() {
       <section className="mt-16 md:mt-24">
         <ScrollReveal>
           <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
+            Chief Patrons of CSI Kancheepuram Chapter
+          </h2>
+           <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
+            The guiding force behind the CSI Kancheepuram Chapter.
+          </p>
+        </ScrollReveal>
+        
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
+           {chiefPatronsData.map((person, index) => (
+            <ScrollReveal key={index} delay={100 * (index % 4)}>
+              <PixelCard>
+                <div className="text-center p-4">
+                  <h3 className="text-xl font-bold text-card-foreground">{person.name}</h3>
+                  <p className="text-muted-foreground mt-1">{person.role}</p>
+                </div>
+              </PixelCard>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16 md:mt-24">
+        <ScrollReveal>
+          <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
             Meet the Office Bearers
           </h2>
           <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
@@ -80,30 +104,6 @@ export default function AboutPage() {
                       <p className="text-sm text-white/80">{person.role}</p>
                     </div>
                 </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-16 md:mt-24">
-        <ScrollReveal>
-          <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
-            Chief Patrons of CSI Kancheepuram Chapter
-          </h2>
-           <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
-            The guiding force behind the CSI Kancheepuram Chapter.
-          </p>
-        </ScrollReveal>
-        
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
-           {chiefPatronsData.map((person, index) => (
-            <ScrollReveal key={index} delay={100 * (index % 4)}>
-              <PixelCard>
-                <div className="text-center p-4">
-                  <h3 className="text-xl font-bold text-card-foreground">{person.name}</h3>
-                  <p className="text-muted-foreground mt-1">{person.role}</p>
-                </div>
-              </PixelCard>
             </ScrollReveal>
           ))}
         </div>
