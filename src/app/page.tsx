@@ -140,7 +140,7 @@ export default function Home() {
                                                 width={1200}
                                                 height={900}
                                                 data-ai-hint={image.hint}
-                                                className="w-full h-full object-cover"
+                                                className="w-full h-full object-contain"
                                             />
                                         </CardContent>
                                       </Card>
