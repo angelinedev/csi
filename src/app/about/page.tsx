@@ -3,6 +3,7 @@
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import Image from 'next/image';
 import PixelCard from '@/components/shared/pixel-card';
+import TiltedCard from '@/components/shared/tilted-card';
 
 const officeBearersData = [
   { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494084/Mrs._Vanitha_Sheba_M_dueits.avif' },
@@ -92,18 +93,16 @@ export default function AboutPage() {
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 justify-items-center">
           {officeBearersData.map((person, index) => (
             <ScrollReveal key={index} delay={100 * (index % 4)}>
-                <div className="relative group w-[300px] h-[400px] rounded-2xl overflow-hidden shadow-lg">
-                   <Image 
-                      src={person.image}
-                      alt={person.name}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent">
-                      <h3 className="text-lg font-bold text-white">{person.name}</h3>
-                      <p className="text-sm text-white/80">{person.role}</p>
-                    </div>
-                </div>
+                <TiltedCard
+                    imageSrc={person.image}
+                    altText={person.name}
+                    overlayContent={
+                        <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/80 to-transparent">
+                            <h3 className="text-xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">{person.name}</h3>
+                            <p className="text-md text-white/80 [text-shadow:0_1px_2px_rgba(0,0,0,0.4)]">{person.role}</p>
+                        </div>
+                    }
+                />
             </ScrollReveal>
           ))}
         </div>
