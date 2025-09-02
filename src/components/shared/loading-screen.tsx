@@ -1,4 +1,3 @@
-
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -7,13 +6,21 @@ import Hyperspeed from './hyperspeed';
 
 export const LoadingScreen = () => {
   const [visible, setVisible] = useState(true);
+  const [fadeout, setFadeout] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const fadeTimer = setTimeout(() => {
+      setFadeout(true);
+    }, 3500);
+
+    const visibilityTimer = setTimeout(() => {
       setVisible(false);
     }, 4000); 
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(visibilityTimer);
+    };
   }, []);
 
   if (!visible) return null;
@@ -21,8 +28,8 @@ export const LoadingScreen = () => {
   return (
     <div
       className={cn(
-        'fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black transition-opacity duration-1000',
-        visible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        'fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black transition-opacity duration-500',
+        fadeout ? 'opacity-0' : 'opacity-100'
       )}
     >
       <Hyperspeed />

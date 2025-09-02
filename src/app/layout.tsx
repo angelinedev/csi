@@ -35,7 +35,7 @@ export default function RootLayout({
     useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4000); // Match the duration of the loading screen
+    }, 4000); 
 
     return () => clearTimeout(timer);
   }, []);

@@ -86,14 +86,14 @@ const defaultOptions: HyperspeedOptions = {
   carShiftX: [-0.8, 0.8],
   carFloorSeparation: [0, 5],
   colors: {
-    roadColor: 0x080808,
-    islandColor: 0x0a0a0a,
+    roadColor: 0x0e0e0e,
+    islandColor: 0x121212,
     background: 0x000000,
-    shoulderLines: 0xffffff,
-    brokenLines: 0xffffff,
-    leftCars: [0xd856bf, 0x6750a2, 0xc247ac],
-    rightCars: [0x03b3c3, 0x0e5ea5, 0x324555],
-    sticks: 0x03b3c3
+    shoulderLines: 0x222222,
+    brokenLines: 0x222222,
+    leftCars: [0xf472b6, 0xc026d3, 0xbe185d],
+    rightCars: [0xf472b6, 0xc026d3, 0xbe185d],
+    sticks: 0xf472b6
   }
 };
 
@@ -1221,14 +1221,7 @@ class App {
 const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {} }) => {
   const mergedOptions: HyperspeedOptions = {
     ...defaultOptions,
-    ...effectOptions,
-    colors: {
-      ...defaultOptions.colors,
-      ...effectOptions.colors,
-      leftCars: [0xF472B6, 0xc247ac, 0x84326d],
-      rightCars: [0xF472B6, 0xc247ac, 0x84326d],
-      sticks: 0xF472B6,
-    }
+    ...effectOptions
   };
   const hyperspeed = useRef<HTMLDivElement>(null);
   const appRef = useRef<App | null>(null);
@@ -1267,3 +1260,6 @@ const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {} }) => {
 };
 
 export default Hyperspeed;
+
+
+i like the orb animation, use this for the loading page background with a hue of 290 and also the light theme of the app should be a teal and gray color scheme
