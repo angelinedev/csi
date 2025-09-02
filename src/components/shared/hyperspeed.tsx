@@ -89,11 +89,11 @@ const defaultOptions: HyperspeedOptions = {
     roadColor: 0x080808,
     islandColor: 0x0a0a0a,
     background: 0x000000,
-    shoulderLines: 0xffffff,
-    brokenLines: 0xffffff,
-    leftCars: [0xd856bf, 0x6750a2, 0xc247ac],
-    rightCars: [0x03b3c3, 0x0e5ea5, 0x324555],
-    sticks: 0x03b3c3
+    shoulderLines: 0x131313,
+    brokenLines: 0x131313,
+    leftCars: [0xf472b6, 0xc026d3, 0xbe185d],
+    rightCars: [0xf472b6, 0xc026d3, 0xbe185d],
+    sticks: 0xf472b6
   }
 };
 
