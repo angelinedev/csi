@@ -33,9 +33,10 @@ export default function RootLayout({
   }, []);
   
     useEffect(() => {
+    // Set a timer to hide the loading screen after a delay
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 4000); 
+    }, 4000); // Adjust time as needed
 
     return () => clearTimeout(timer);
   }, []);
