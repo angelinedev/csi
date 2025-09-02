@@ -1,9 +1,9 @@
 
 'use client';
 import { useState, useEffect } from 'react';
-import Hyperspeed from './hyperspeed';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import Hyperspeed from './hyperspeed';
 
 export const LoadingScreen = () => {
   const [visible, setVisible] = useState(true);

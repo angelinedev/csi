@@ -89,11 +89,11 @@ const defaultOptions: HyperspeedOptions = {
     roadColor: 0x080808,
     islandColor: 0x0a0a0a,
     background: 0x000000,
-    shoulderLines: 0x131313,
-    brokenLines: 0x131313,
-    leftCars: [0xf472b6, 0xc026d3, 0xbe185d],
-    rightCars: [0xf472b6, 0xc026d3, 0xbe185d],
-    sticks: 0xf472b6
+    shoulderLines: 0xffffff,
+    brokenLines: 0xffffff,
+    leftCars: [0xd856bf, 0x6750a2, 0xc247ac],
+    rightCars: [0x03b3c3, 0x0e5ea5, 0x324555],
+    sticks: 0x03b3c3
   }
 };
 
@@ -585,14 +585,17 @@ const carLightsVertex = `
     float radius = aMetrics.r;
     float myLength = aMetrics.g;
     float speed = aMetrics.b;
+
     transformed.xy *= radius;
     transformed.z *= myLength;
-    float zOffset = myLength + mod(uTime * speed + aOffset.z, uTravelLength);
-    transformed.z += zOffset;
+
+    transformed.z += myLength - mod(uTime * speed + aOffset.z, uTravelLength);
     transformed.xy += aOffset.xy;
+
     float progress = abs(transformed.z / uTravelLength);
     transformed.xyz += getDistortion(progress);
-    vec4 mvPosition = modelViewMatrix * vec4(transformed, 1.0);
+
+    vec4 mvPosition = modelViewMatrix * vec4(transformed, 1.);
     gl_Position = projectionMatrix * mvPosition;
     vUv = uv;
     vColor = aColor;
@@ -851,26 +854,27 @@ const roadMarkings_vars = `
   uniform float uShoulderLinesWidthPercentage;
   uniform float uBrokenLinesWidthPercentage;
   uniform float uBrokenLinesLengthPercentage;
+  highp float random(vec2 co) {
+    highp float a = 12.9898;
+    highp float b = 78.233;
+    highp float c = 43758.5453;
+    highp float dt = dot(co.xy, vec2(a, b));
+    highp float sn = mod(dt, 3.14);
+    return fract(sin(sn) * c);
+  }
 `;
 
 const roadMarkings_fragment = `
-  float laneWidth = 1. / uLanes;
-  uv.y = mod(uv.y + uTime * 0.1, 1.);
+  uv.y = mod(uv.y + uTime * 0.05, 1.);
+  float laneWidth = 1.0 / uLanes;
+  float brokenLineWidth = laneWidth * uBrokenLinesWidthPercentage;
+  float laneEmptySpace = 1. - uBrokenLinesLengthPercentage;
 
-  float shoulderLine = smoothstep(
-    uShoulderLinesWidthPercentage,
-    0.,
-    abs(uv.x - 0.5) * 2. - (1. - uShoulderLinesWidthPercentage * uLanes)
-  );
-  color = mix(color, uShoulderLinesColor, shoulderLine);
+  float brokenLines = step(1.0 - brokenLineWidth, fract(uv.x * 2.0)) * step(laneEmptySpace, fract(uv.y * 10.0));
+  float sideLines = step(1.0 - brokenLineWidth, fract((uv.x - laneWidth * (uLanes - 1.0)) * 2.0)) + step(brokenLineWidth, uv.x);
 
-  float brokenLineWidth = 1. / uLanes * uBrokenLinesWidthPercentage;
-  float brokenLine = 
-    step(uv.y, uBrokenLinesLengthPercentage) *
-    (1. - step(brokenLineWidth, abs(fract(uv.x * uLanes) - 0.5) * 2.));
-  color = mix(color, uBrokenLinesColor, brokenLine);
+  brokenLines = mix(brokenLines, sideLines, uv.x);
 `;
-
 
 const roadFragment = roadBaseFragment
   .replace('#include <roadMarkings_fragment>', roadMarkings_fragment)
@@ -885,11 +889,10 @@ const roadVertex = `
   #include <getDistortion_vertex>
   void main() {
     vec3 transformed = position.xyz;
-    float progress = (transformed.y + uTravelLength / 2.) / uTravelLength;
-    vec3 distortion = getDistortion(progress);
+    vec3 distortion = getDistortion((transformed.y + uTravelLength / 2.) / uTravelLength);
     transformed.x += distortion.x;
     transformed.z += distortion.y;
-    transformed.y = position.y;
+    transformed.y += -1. * distortion.z;  
     
     vec4 mvPosition = modelViewMatrix * vec4(transformed, 1.);
     gl_Position = projectionMatrix * mvPosition;
@@ -1218,7 +1221,14 @@ class App {
 const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {} }) => {
   const mergedOptions: HyperspeedOptions = {
     ...defaultOptions,
-    ...effectOptions
+    ...effectOptions,
+    colors: {
+      ...defaultOptions.colors,
+      ...effectOptions.colors,
+      leftCars: [0xF472B6, 0xc247ac, 0x84326d],
+      rightCars: [0xF472B6, 0xc247ac, 0x84326d],
+      sticks: 0xF472B6,
+    }
   };
   const hyperspeed = useRef<HTMLDivElement>(null);
   const appRef = useRef<App | null>(null);
