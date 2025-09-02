@@ -1,11 +1,9 @@
-
 'use client';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RollingGallery from '@/components/shared/rolling-gallery';
 import Image from 'next/image';
-import Prism from '@/components/shared/prism';
 
 const pastEvents = [
   {
@@ -67,9 +65,6 @@ export default function Home() {
   return (
     <div className="animate-fade-in-up">
        <section className="relative flex h-[80vh] min-h-[500px] items-center justify-center text-center">
-        <div className="absolute inset-0 z-0">
-          <Prism animationType="3drotate" />
-        </div>
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background to-transparent" />
         
         <div className="relative z-10 px-4">
@@ -146,10 +141,10 @@ export default function Home() {
       <section className="py-16 md:py-24 overflow-hidden">
         <div className="container mx-auto px-4">
           <ScrollReveal>
-            <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
+            <h2 className="text-3xl font-bold text-center tracking-tight md.text-4xl">
               Moments from Our Past Events
             </h2>
-            <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
+            <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md.text-lg">
               A glimpse into the vibrant and engaging events hosted by CSI-JCE.
             </p>
           </ScrollReveal>
