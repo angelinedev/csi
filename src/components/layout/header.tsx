@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -39,8 +40,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full glassmorphic">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
-        <div className="flex items-center md:flex-1">
-           {/* Placeholder for left-aligned content or logo if needed in future */}
+        <div className="flex items-center">
+           <Link href="/" className="flex items-center gap-2">
+              <Image src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756852570/csi_logo_uwq5lr.png" alt="CSI Logo" width={50} height={50} />
+           </Link>
         </div>
 
         <nav className="hidden md:flex items-center justify-center gap-2">
