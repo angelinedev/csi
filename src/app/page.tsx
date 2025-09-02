@@ -85,7 +85,7 @@ export default function Home() {
               <Button asChild size="lg">
                 <Link href="/events">Upcoming Events</Link>
               </Button>
-              <Button asChild size="lg" variant="secondary" className="btn-secondary-hover">
+              <Button asChild size="lg" variant="glowing">
                 <Link href="/about">About Us</Link>
               </Button>
             </div>
