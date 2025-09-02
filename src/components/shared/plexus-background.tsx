@@ -39,7 +39,7 @@ export const PlexusBackground = () => {
       }
 
       draw() {
-        ctx!.fillStyle = 'hsl(var(--primary))';
+        ctx!.fillStyle = 'hsl(322 84% 65%)';
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx!.fill();
@@ -62,7 +62,7 @@ export const PlexusBackground = () => {
 
           if (distance < 100) {
             const opacity = 1 - distance / 100;
-            ctx!.strokeStyle = `hsla(var(--primary), ${opacity * 0.5})`;
+            ctx!.strokeStyle = `hsla(322, 84%, 65%, ${opacity * 0.5})`;
             ctx!.lineWidth = 1;
             ctx!.beginPath();
             ctx!.moveTo(particles[i].x, particles[i].y);
