@@ -121,7 +121,7 @@ export default function Home() {
                     <CarouselItem key={index}>
                       <div className="p-1">
                         <Card className="overflow-hidden glassmorphic">
-                          <CardContent className="flex aspect-video items-center justify-center p-0">
+                          <CardContent className="flex aspect-video items-center justify-center p-6">
                              <Image
                                 src={src}
                                 alt={`Inauguration of CSI Student Chapter ${index + 1}`}
