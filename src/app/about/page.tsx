@@ -4,6 +4,9 @@ import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import Image from 'next/image';
 import PixelCard from '@/components/shared/pixel-card';
 import TiltedCard from '@/components/shared/tilted-card';
+import { GlowingCard } from '@/components/shared/glowing-card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Rocket, Users, Zap } from 'lucide-react';
 
 const officeBearersData = [
   { name: 'Mrs. Vanitha Sheba M', role: 'SBC-CSI', image: 'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756494084/Mrs._Vanitha_Sheba_M_dueits.avif' },
@@ -24,6 +27,27 @@ const chiefPatronsData = [
     { name: 'Dr.J.Dafni Rose', role: 'Vice-Chairman' },
     { name: 'Dr.B.Sreedevi', role: 'Hon.Secretary' },
     { name: 'Dr.D.Weslin', role: 'Hon.Treasurer' },
+];
+
+const missionData = [
+  {
+    icon: Rocket,
+    title: 'Innovation',
+    description:
+      'We champion creative thinking and cutting-edge projects, pushing the boundaries of what\'s possible in technology.',
+  },
+  {
+    icon: Users,
+    title: 'Community',
+    description:
+      'We foster a collaborative environment where students can connect, share ideas, and grow together as tech enthusiasts.',
+  },
+  {
+    icon: Zap,
+    title: 'Growth',
+    description:
+      'We provide opportunities for skill development, learning, and career advancement through workshops and events.',
+  },
 ];
 
 export default function AboutPage() {
@@ -47,14 +71,35 @@ export default function AboutPage() {
         </div>
       </ScrollReveal>
 
-      <ScrollReveal delay={400}>
-        <div className="mt-12 max-w-4xl mx-auto p-8 rounded-xl glassmorphic">
-          <h3 className="text-2xl font-bold text-primary">Our Mission</h3>
-          <p className="mt-4 text-foreground/80">
-            Our mission is to facilitate research, knowledge sharing, and career development among students in the field of computer science. We organize workshops, seminars, and competitions to provide a platform for students to showcase their skills and learn from industry experts.
-          </p>
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
+              Our Mission
+            </h2>
+            <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
+              To inspire, educate, and empower the next generation of tech leaders.
+            </p>
+          </ScrollReveal>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {missionData.map((item, index) => (
+              <ScrollReveal key={item.title} delay={150 * index}>
+                <GlowingCard className="h-full text-center glassmorphic">
+                  <CardHeader>
+                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <item.icon className="h-8 w-8" />
+                    </div>
+                    <CardTitle>{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{item.description}</p>
+                  </CardContent>
+                </GlowingCard>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
-      </ScrollReveal>
+      </section>
 
       <section className="mt-16 md:mt-24">
         <ScrollReveal>
