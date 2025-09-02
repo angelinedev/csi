@@ -4,6 +4,16 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RollingGallery from '@/components/shared/rolling-gallery';
 import Image from 'next/image';
+import { Card, CardContent } from '@/components/ui/card';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
+import React from 'react';
 
 const pastEvents = [
   {
@@ -48,7 +58,16 @@ const pastEvents = [
   },
 ];
 
+const inaugurationImages = [
+  'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756754394/Inauguration_2025_-_2_js78ko.avif',
+  'https://res.cloudinary.com/dfi26rd6m/image/upload/v1756752567/Inauguration_2025_jfvaly.avif',
+];
+
 export default function Home() {
+  const plugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  );
+
   return (
     <div className="animate-fade-in-up">
        <section className="relative flex h-[80vh] min-h-[500px] items-center justify-center text-center">
@@ -90,15 +109,36 @@ export default function Home() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={200}>
-            <div className="mt-12 max-w-5xl mx-auto p-4 md:p-6 rounded-2xl glassmorphic">
-              <Image
-                src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756404667/Picture1_d5gop7.avif"
-                alt="Inauguration of CSI Student Chapter"
-                width={1200}
-                height={800}
-                className="rounded-lg w-full h-auto"
-                data-ai-hint="inauguration event"
-              />
+            <div className="mt-12 max-w-5xl mx-auto">
+              <Carousel
+                plugins={[plugin.current]}
+                className="w-full"
+                onMouseEnter={plugin.current.stop}
+                onMouseLeave={plugin.current.reset}
+              >
+                <CarouselContent>
+                  {inaugurationImages.map((src, index) => (
+                    <CarouselItem key={index}>
+                      <div className="p-1">
+                        <Card className="overflow-hidden glassmorphic">
+                          <CardContent className="flex aspect-video items-center justify-center p-0">
+                             <Image
+                                src={src}
+                                alt={`Inauguration of CSI Student Chapter ${index + 1}`}
+                                width={1200}
+                                height={800}
+                                className="rounded-lg w-full h-auto object-cover"
+                                data-ai-hint="inauguration event"
+                              />
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-4" />
+                <CarouselNext className="right-4" />
+              </Carousel>
             </div>
           </ScrollReveal>
         </div>
