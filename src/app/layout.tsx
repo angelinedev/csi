@@ -5,11 +5,8 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Footer } from '@/components/layout/footer';
-import { LoadingScreen } from '@/components/shared/loading-screen';
-import { usePathname } from 'next/navigation';
-
 
 export default function RootLayout({
   children,
@@ -17,13 +14,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const spotlightRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
-  const isHome = pathname === '/';
-  const [loading, setLoading] = useState(isHome);
-
-  useEffect(() => {
-    if (loading) return;
-  }, [loading]);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -54,9 +44,6 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body flex flex-col min-h-screen">
-       {loading && isHome ? (
-          <LoadingScreen finished={() => setLoading(false)} />
-        ) : (
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
@@ -70,7 +57,6 @@ export default function RootLayout({
             <Footer />
             <Toaster />
           </ThemeProvider>
-        )}
       </body>
     </html>
   );
