@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RollingGallery from '@/components/shared/rolling-gallery';
 import Image from 'next/image';
+import MagicBento from '@/components/shared/magic-bento';
 
 const pastEvents = [
   {
@@ -48,19 +49,6 @@ const pastEvents = [
   },
 ];
 
-const inaugurationImages = [
-    {
-        src: "https://res.cloudinary.com/dfi26rd6m/image/upload/v1756754394/Inauguration_2025_-_2_js78ko.avif",
-        alt: "Inauguration of CSI-JCE - Team",
-        hint: "team inauguration",
-    },
-    {
-        src: "https://res.cloudinary.com/dfi26rd6m/image/upload/v1756752567/Inauguration_2025_jfvaly.avif",
-        alt: "Inauguration of CSI-JCE - Dignitaries",
-        hint: "dignitaries inauguration",
-    }
-];
-
 export default function Home() {
   return (
     <div className="animate-fade-in-up">
@@ -92,50 +80,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-            <ScrollReveal>
-                <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
-                Our Inauguration
-                </h2>
-                <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
-                The official launch of the CSI-JCE chapter and introduction of our dedicated office bearers.
-                </p>
-            </ScrollReveal>
-
-            <div className="mt-12 max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-                  {inaugurationImages.map((image, index) => (
-                      <ScrollReveal 
-                        key={image.src} 
-                        className="group"
-                        initialX={index === 0 ? -100 : 100}
-                      >
-                          <div className="p-1 relative rounded-lg bg-background transition-all duration-500 group-hover:scale-105">
-                               <div
-                                  className="absolute -z-10 inset-0 rounded-lg bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_200%] animate-[border-flow_5s_ease_infinite]"
-                               />
-                              <div className="p-1 rounded-lg bg-background">
-                                  <Image
-                                      src={image.src}
-                                      alt={image.alt}
-                                      width={1200}
-                                      height={900}
-                                      data-ai-hint={image.hint}
-                                      className="object-contain rounded-md"
-                                  />
-                              </div>
-                          </div>
-                      </ScrollReveal>
-                  ))}
-              </div>
-              <div className="mt-12 text-center">
-                  <Button asChild size="lg">
-                      <Link href="/about">Meet the Team</Link>
-                  </Button>
-              </div>
-            </div>
-        </div>
+      <section className="py-16 md:py-24 flex flex-col items-center">
+        <ScrollReveal>
+          <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
+            What We Do
+          </h2>
+          <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
+            We host a variety of events and activities to nurture technical skills and build a strong community.
+          </p>
+        </ScrollReveal>
+        <MagicBento />
       </section>
 
       <section className="py-16 md:py-24 overflow-hidden">
