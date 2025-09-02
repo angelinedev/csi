@@ -79,6 +79,31 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
+              Our Inauguration
+            </h2>
+            <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
+              The official launch of the CSI student chapter at Jerusalem College of Engineering, a milestone event celebrating our commitment to technology and innovation.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={200}>
+            <div className="mt-12 max-w-5xl mx-auto p-4 md:p-6 rounded-2xl glassmorphic">
+              <Image
+                src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756404667/Picture1_d5gop7.avif"
+                alt="Inauguration of CSI Student Chapter"
+                width={1200}
+                height={800}
+                className="rounded-lg w-full h-auto"
+                data-ai-hint="inauguration event"
+              />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       <section className="py-16 md:py-24 overflow-hidden">
         <div className="container mx-auto px-4">
           <ScrollReveal>
