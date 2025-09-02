@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RollingGallery from '@/components/shared/rolling-gallery';
 import Image from 'next/image';
-import MagicBento from '@/components/shared/magic-bento';
 
 const pastEvents = [
   {
@@ -78,18 +77,6 @@ export default function Home() {
             </div>
           </ScrollReveal>
         </div>
-      </section>
-
-      <section className="py-16 md:py-24 flex flex-col items-center">
-        <ScrollReveal>
-          <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
-            What We Do
-          </h2>
-          <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
-            We host a variety of events and activities to nurture technical skills and build a strong community.
-          </p>
-        </ScrollReveal>
-        <MagicBento />
       </section>
 
       <section className="py-16 md:py-24 overflow-hidden">
