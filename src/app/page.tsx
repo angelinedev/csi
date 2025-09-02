@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RollingGallery from '@/components/shared/rolling-gallery';
 import Image from 'next/image';
+import Prism from '@/components/shared/prism';
 
 const pastEvents = [
   {
@@ -65,7 +66,10 @@ const inaugurationImages = [
 export default function Home() {
   return (
     <div className="animate-fade-in-up">
-      <section className="relative flex h-[80vh] min-h-[500px] items-center justify-center text-center">
+       <section className="relative flex h-[80vh] min-h-[500px] items-center justify-center text-center">
+        <div className="absolute inset-0 z-0">
+          <Prism animationType="3drotate" />
+        </div>
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background to-transparent" />
         
         <div className="relative z-10 px-4">
