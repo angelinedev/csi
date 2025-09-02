@@ -5,8 +5,10 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Footer } from '@/components/layout/footer';
+import { LoadingScreen } from '@/components/shared/loading-screen';
+import { usePathname } from 'next/navigation';
 
 
 export default function RootLayout({
@@ -15,6 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const spotlightRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+  const [loading, setLoading] = useState(isHome);
+
+  useEffect(() => {
+    if (loading) return;
+  }, [loading]);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -45,19 +54,23 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body flex flex-col min-h-screen">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div ref={spotlightRef} className="fixed inset-0 -z-10 h-full w-full bg-background animated-gradient">
-          </div>
-          <Header />
-          <main className="overflow-x-hidden flex-grow">{children}</main>
-          <Footer />
-          <Toaster />
-        </ThemeProvider>
+       {loading && isHome ? (
+          <LoadingScreen finished={() => setLoading(false)} />
+        ) : (
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div ref={spotlightRef} className="fixed inset-0 -z-10 h-full w-full bg-background animated-gradient">
+            </div>
+            <Header />
+            <main className="overflow-x-hidden flex-grow">{children}</main>
+            <Footer />
+            <Toaster />
+          </ThemeProvider>
+        )}
       </body>
     </html>
   );

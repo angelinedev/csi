@@ -1,3 +1,4 @@
+
 'use client';
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
 import { Button } from '@/components/ui/button';
@@ -69,7 +70,7 @@ export default function Home() {
   );
 
   return (
-    <div className="animate-fade-in-up">
+    <div>
        <section className="relative flex h-[80vh] min-h-[500px] items-center justify-center text-center">
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-background to-transparent" />
         

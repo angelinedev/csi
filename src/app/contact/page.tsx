@@ -27,7 +27,7 @@ const contactDetails = [
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24 animate-fade-in-up">
+    <div className="container mx-auto px-4 py-16 md:py-24">
       <ScrollReveal>
         <h1 className="text-4xl font-bold tracking-tighter text-center md:text-5xl">
           Get In Touch
