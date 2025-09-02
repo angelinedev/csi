@@ -21,11 +21,9 @@ export function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Close the mobile menu when the route changes
     setIsOpen(false);
   }, [pathname]);
   
-  // Prevent scrolling when the mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -40,9 +38,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full glassmorphic">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
-        <div className="flex items-center">
+        <div className="flex items-center md:flex-1">
            <Link href="/" className="flex items-center gap-2">
-              <Image src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756852570/csi_logo_uwq5lr.png" alt="CSI Logo" width={50} height={50} />
+              <Image src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756807923/CSI_LOGO_jeozg4.avif" alt="CSI Logo" width={50} height={50} />
            </Link>
         </div>
 
