@@ -5,9 +5,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RollingGallery from '@/components/shared/rolling-gallery';
 import Image from 'next/image';
-import { GlowingCard } from '@/components/shared/glowing-card';
-import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Rocket, Users, Zap } from 'lucide-react';
 
 const pastEvents = [
   {
@@ -65,28 +62,6 @@ const inaugurationImages = [
     }
 ];
 
-const missionData = [
-  {
-    icon: Rocket,
-    title: 'Innovation',
-    description:
-      'We champion creative thinking and cutting-edge projects, pushing the boundaries of what\'s possible in technology.',
-  },
-  {
-    icon: Users,
-    title: 'Community',
-    description:
-      'We foster a collaborative environment where students can connect, share ideas, and grow together as tech enthusiasts.',
-  },
-  {
-    icon: Zap,
-    title: 'Growth',
-    description:
-      'We provide opportunities for skill development, learning, and career advancement through workshops and events.',
-  },
-];
-
-
 export default function Home() {
   return (
     <div className="animate-fade-in-up">
@@ -118,36 +93,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background/50">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <h2 className="text-3xl font-bold text-center tracking-tight md:text-4xl">
-              Our Mission
-            </h2>
-            <p className="mt-4 max-w-3xl mx-auto text-center text-muted-foreground md:text-lg">
-              To inspire, educate, and empower the next generation of tech leaders.
-            </p>
-          </ScrollReveal>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {missionData.map((item, index) => (
-              <ScrollReveal key={item.title} delay={150 * index}>
-                <GlowingCard className="h-full text-center glassmorphic">
-                  <CardHeader>
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <item.icon className="h-8 w-8" />
-                    </div>
-                    <CardTitle>{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </CardContent>
-                </GlowingCard>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-      
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
             <ScrollReveal>
