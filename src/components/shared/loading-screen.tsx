@@ -2,7 +2,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { PlexusBackground } from '@/components/shared/plexus-background';
+import Beams from '@/components/shared/beams-background';
 import { cn } from '@/lib/utils';
 
 interface LoadingScreenProps {
@@ -29,7 +29,7 @@ export const LoadingScreen = ({ finished }: LoadingScreenProps) => {
       )}
     >
       <div className="absolute inset-0 z-0">
-          <PlexusBackground />
+          <Beams lightColor="hsl(var(--primary))" />
       </div>
       <div className="relative z-10 flex flex-col items-center">
          <Image src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756807923/CSI_LOGO_jeozg4.avif" alt="CSI Logo" width={100} height={100} className="animate-pulse" />
