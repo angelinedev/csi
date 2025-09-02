@@ -5,9 +5,8 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Toaster } from '@/components/ui/toaster';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Footer } from '@/components/layout/footer';
-import { LoadingScreen } from '@/components/shared/loading-screen';
 
 export default function RootLayout({
   children,
@@ -15,8 +14,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const spotlightRef = useRef<HTMLDivElement>(null);
-  const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -30,15 +27,6 @@ export default function RootLayout({
     };
     window.addEventListener('mousemove', handler);
     return () => window.removeEventListener('mousemove', handler);
-  }, []);
-  
-    useEffect(() => {
-    // Set a timer to hide the loading screen after a delay
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 4000); // Adjust time as needed
-
-    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -62,7 +50,6 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {loading && <LoadingScreen />}
             <div ref={spotlightRef} className="fixed inset-0 -z-10 h-full w-full bg-background animated-gradient">
             </div>
             <Header />
