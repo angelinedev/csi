@@ -40,9 +40,9 @@ const cardData: BentoCardProps[] = [
   },
   {
     color: '#060010',
-    title: 'Hackathons',
-    description: '24-hour coding competitions to build innovative solutions.',
-    label: 'Build'
+    title: 'Paper Presentation',
+    description: 'Showcase your research and present your findings to peers.',
+    label: 'Present'
   },
   {
     color: '#060010',
