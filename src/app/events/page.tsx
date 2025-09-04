@@ -1,11 +1,11 @@
 
 import { ScrollReveal } from '@/components/shared/scroll-reveal';
-import ElectricBorder from '@/components/shared/electric-border';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, Clock } from 'lucide-react';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlowingCard } from '@/components/shared/glowing-card';
 
 const allEvents = [
   {
@@ -69,11 +69,7 @@ const pastEvents = allEvents.filter(event => event.status === 'Past');
 
 
 const EventCard = ({ event }: { event: (typeof allEvents)[0] }) => (
-    <ElectricBorder
-      className="group"
-      style={{ borderRadius: 'var(--radius)' }}
-    >
-      <Card className="group overflow-hidden glassmorphic rounded-lg flex flex-col h-full">
+    <GlowingCard className="group overflow-hidden glassmorphic rounded-lg flex flex-col h-full">
         <div className="flex flex-col md:flex-row">
             <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
                 <Image
@@ -108,8 +104,7 @@ const EventCard = ({ event }: { event: (typeof allEvents)[0] }) => (
                 )}
             </div>
         </div>
-      </Card>
-    </ElectricBorder>
+    </GlowingCard>
 );
 
 
@@ -134,7 +129,7 @@ export default function EventsPage() {
                 Stay tuned for our next big thing.
             </p>
         </ScrollReveal>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-start">
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             {upcomingEvents.map((event, index) => (
             <ScrollReveal key={event.title} delay={100 * (index % 2)}>
                 <EventCard event={event} />
@@ -152,7 +147,7 @@ export default function EventsPage() {
                 A look back at our memorable moments.
             </p>
         </ScrollReveal>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-start">
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             {pastEvents.map((event, index) => (
                 <ScrollReveal key={event.title} delay={100 * (index % 2)}>
                     <EventCard event={event} />
