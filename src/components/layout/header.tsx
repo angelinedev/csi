@@ -69,16 +69,16 @@ export function Header() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            <div className="relative h-6 w-6">
+            <div className="relative h-8 w-8">
               <Menu
                 className={cn(
-                  'absolute transition-all duration-300',
+                  'absolute transition-all duration-300 h-8 w-8',
                   isOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'
                 )}
               />
               <X
                 className={cn(
-                  'absolute transition-all duration-300',
+                  'absolute transition-all duration-300 h-8 w-8',
                   isOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'
                 )}
               />
