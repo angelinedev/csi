@@ -68,7 +68,7 @@ const pastEvents = allEvents.filter(event => event.status === 'Past');
 
 
 const EventCard = ({ event }: { event: (typeof allEvents)[0] }) => (
-    <Card className="group overflow-hidden glassmorphic rounded-lg flex flex-col h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+    <Card className="group overflow-hidden glassmorphic rounded-lg flex flex-col h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 ring-offset-background hover:ring-2 hover:ring-ring hover:ring-offset-2">
         <div className="flex flex-col md:flex-row">
             <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
                 <Image
