@@ -4,8 +4,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, Clock } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { GlowingCard } from '@/components/shared/glowing-card';
+import { Card } from '@/components/ui/card';
 
 const allEvents = [
   {
@@ -69,7 +68,7 @@ const pastEvents = allEvents.filter(event => event.status === 'Past');
 
 
 const EventCard = ({ event }: { event: (typeof allEvents)[0] }) => (
-    <GlowingCard className="group overflow-hidden glassmorphic rounded-lg flex flex-col h-full">
+    <Card className="group overflow-hidden glassmorphic rounded-lg flex flex-col h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
         <div className="flex flex-col md:flex-row">
             <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
                 <Image
@@ -104,7 +103,7 @@ const EventCard = ({ event }: { event: (typeof allEvents)[0] }) => (
                 )}
             </div>
         </div>
-    </GlowingCard>
+    </Card>
 );
 
 
