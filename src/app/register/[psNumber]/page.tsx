@@ -68,6 +68,7 @@ export default function RegisterPage() {
     });
 
     if (response.ok) {
+      alert('Registration Successful! Your team has been registered.');
       toast({ title: "Registration Successful!", description: "Your team has been registered." });
       form.reset();
     } else {
