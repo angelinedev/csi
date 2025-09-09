@@ -1,11 +1,15 @@
 import { cn } from '@/lib/utils';
-import { Card, type CardProps } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 
 export function GlowingCard({
   className,
   children,
   ...props
-}: CardProps) {
+}: {
+  className?: string;
+  children: React.ReactNode;
+  [key: string]: any;
+}) {
   return (
     <Card
       className={cn(

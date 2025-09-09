@@ -5,16 +5,18 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, Clock } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import Link from 'next/link';
 
 const allEvents = [
   {
-    title: 'Upcoming Event',
+    title: 'Smart India Hackathon',
     description: 'Details for the next event will be announced soon. Stay tuned!',
     date: 'Upcoming',
     time: 'Upcoming',
     image: 'https://placehold.co/600x400.png',
     hint: 'coming soon',
     status: 'Upcoming',
+    registrationLink: '/problem-statements',
   },
   {
     title: 'ALCODE',
@@ -67,7 +69,7 @@ const upcomingEvents = allEvents.filter(event => event.status === 'Upcoming');
 const pastEvents = allEvents.filter(event => event.status === 'Past');
 
 
-const EventCard = ({ event }: { event: (typeof allEvents)[0] }) => (
+const EventCard = ({ event }:{ event: (typeof allEvents)[0] & { registrationLink?: string } }) => (
     <Card className="group overflow-hidden glassmorphic rounded-lg flex flex-col h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 ring-offset-background hover:ring-2 hover:ring-ring hover:ring-offset-2">
         <div className="flex flex-col md:flex-row">
             <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
@@ -98,8 +100,10 @@ const EventCard = ({ event }: { event: (typeof allEvents)[0] }) => (
                         <span>{event.time}</span>
                     </div>
                 </div>
-                {event.status === 'Upcoming' && (
-                <Button className="mt-6 w-full md:w-auto self-start">Register Now</Button>
+                {event.status === 'Upcoming' && event.registrationLink && (
+                  <Link href={event.registrationLink}>
+                    <Button className="mt-6 w-full md:w-auto self-start">Register Now</Button>
+                  </Link>
                 )}
             </div>
         </div>

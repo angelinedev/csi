@@ -32,7 +32,6 @@ const pastEvents = [
 ];
 
 export default function Home() {
-  const eventImages = pastEvents.map(event => event.img);
   return (
     <div className="animate-fade-in-up">
       <section className="relative flex h-[80vh] min-h-[500px] items-center justify-center text-center">
@@ -75,7 +74,7 @@ export default function Home() {
           </ScrollReveal>
         </div>
         <div className="mt-12">
-            <RollingGallery images={eventImages} autoplay pauseOnHover />
+            <RollingGallery items={pastEvents} autoplay pauseOnHover />
         </div>
       </section>
     </div>

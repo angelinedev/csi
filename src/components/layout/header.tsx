@@ -11,6 +11,7 @@ import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Home' },
+  { href: '/problem-statements', label: 'Problem Statements' },
   { href: '/about', label: 'About' },
   { href: '/events', label: 'Events' },
   { href: '/contact', label: 'Contact' },
@@ -40,7 +41,7 @@ export function Header() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <div className="flex items-center md:flex-1">
            <Link href="/" className="flex items-center gap-2">
-              <Image src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756807923/CSI_LOGO_jeozg4.avif" alt="CSI Logo" width={50} height={50} />
+              <Image src="https://res.cloudinary.com/dfi26rd6m/image/upload/v1756807923/CSI_LOGO_jeozg4.avif" alt="CSI Logo" width={50} height={50} priority />
            </Link>
         </div>
 

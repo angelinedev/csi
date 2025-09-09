@@ -6,7 +6,7 @@
 - About Page Display: Presents key details regarding CSI at Jerusalem College of Engineering including the list of Office Bearers utilizing the Chroma Grid component from Reactbits.
 - Scroll Stack Integration: Displays past event photos through Scroll Stack.
 - Events Display: Incorporates Electric Border and Profile Card components from Reactbits to showcase event details.
-- Contact Form: Contact form allows the user to submit a Name, Email, Department, Year, and Message to the administration of CSI chapter.
+- Contact Form: Contact form allows the user to submit a Name, Department, Year, and Message to the administration of CSI chapter.
 - Light/Dark Mode Toggle: Enables users to switch between a light and dark theme with animated transitions for enhanced accessibility and visual comfort.
 
 ## Style Guidelines:
